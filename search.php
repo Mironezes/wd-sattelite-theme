@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package WP_Theme
+ * @package WD_Sattelite_Theme
  */
 
 get_header();

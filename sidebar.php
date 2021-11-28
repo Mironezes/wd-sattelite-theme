@@ -4,14 +4,19 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package WP_Theme
+ * @package WD_Sattelite_Theme
  */
-
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
-}
 ?>
 
-<aside id="secondary" class="widget-area">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+<aside class="site-content-aside">
+	<?= do_shortcode('[yop_poll id="1"]'); ?>
+
+	<?php dynamic_sidebar( 'sidebar' ); ?>
+
+	<?php 
+	if(is_single() || is_archive() ) {
+		related_post(); 
+	}
+	?>
+	
 </aside><!-- #secondary -->

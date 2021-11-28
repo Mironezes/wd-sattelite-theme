@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package WP_Theme
+ * @package WD_Sattelite_Theme
  */
 
 ?>
@@ -24,15 +24,28 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="page" class="site">
-	<header id="masthead" class="site-header">
-		<nav id="site-navigation" class="main-navigation">
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+	<header class="site-header">
+		<div class="container">
+			<div class="header-logo">
+				<?php if( is_home() ) : ?>
+					<span>Kelleysbookkeeping.com</span>
+				<?php else: ?>
+					<a href="<?= site_url('/');?>">Kelleysbookkeeping.com</a>
+				<?php endif; ?>
+			</div>
+			<nav id="header-navigation" class="navigation">
+				<div id="mobile-menu-toggler">
+					<span id="mobile-menu-open"><img src="<?= get_template_directory_uri() ;?>/images/burger-icon.svg" alt="icon"></span>
+					<span id="mobile-menu-close"><img src="<?= get_template_directory_uri() ;?>/images/close-icon.svg" alt="icon"></span>
+				</div>
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'header_nav',
+						'menu_id'        => 'header',
+					)
+				);
+				?>
+			</nav><!-- #site-navigation -->
+		</div>
+	</header><!-- header -->

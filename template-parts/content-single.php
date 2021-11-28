@@ -4,51 +4,32 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package WP_Theme
+ * @package WD_Sattelite_Theme
  */
 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
-
-	<?php wp_theme_post_thumbnail(); ?>
-
-	<div class="entry-content">
+	<section class="single-post-content">
 		<?php
-		the_content();
-
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'wds-theme' ),
-				'after'  => '</div>',
-			)
-		);
+		  the_content();
 		?>
-	</div><!-- .entry-content -->
+	</section><!-- .single-post-content -->
 
-	<?php if ( get_edit_post_link() ) : ?>
-		<footer class="entry-footer">
-			<?php
-			edit_post_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: Name of current post. Only visible to screen readers */
-						__( 'Edit <span class="screen-reader-text">%s</span>', 'wds-theme' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					wp_kses_post( get_the_title() )
-				),
-				'<span class="edit-link">',
-				'</span>'
-			);
-			?>
-		</footer><!-- .entry-footer -->
-	<?php endif; ?>
+  
+  <section class="single-post-author-block">
+  <?php 
+    $author_name = get_the_author_meta('first_name') . ' ' . get_the_author_meta('last_name');
+    $author_slug = "/author/" . get_the_author() . "/";
+  ?>
+    <div class="author-image">
+      <img src="<?= get_template_directory_uri();?>/images/author-preview.jpg" alt="author" width="48" height="48">
+    </div>
+    <div class="publication-info">
+		  <span class="author-name">Published by <?= $author_name ?> </span>
+      <span class="publication-date"> on <?= get_the_date();?></span>
+      <a class="all-author-posts-link" href="<?= $author_slug;?>">See all author posts</a>
+    </div>
+	</section>
+
 </article><!-- #post-<?php the_ID(); ?> -->

@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package WP_Theme
+ * @package WD_Sattelite_Theme
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
@@ -12,7 +12,7 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.0' );
 }
 
-if ( ! function_exists( 'wp_theme_setup' ) ) :
+if ( ! function_exists( 'wd_sattelite_theme_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -20,7 +20,7 @@ if ( ! function_exists( 'wp_theme_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function wp_theme_setup() {
+	function wd_sattelite_theme_setup() {
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
@@ -55,7 +55,8 @@ if ( ! function_exists( 'wp_theme_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'wds-theme' ),
+				'header_nav' => esc_html__( 'Header', 'wds-theme' ),
+				'footer_nav' => esc_html__( 'Footer', 'wds-theme' ),
 			)
 		);
 
@@ -80,7 +81,7 @@ if ( ! function_exists( 'wp_theme_setup' ) ) :
 		add_theme_support(
 			'custom-background',
 			apply_filters(
-				'wp_theme_custom_background_args',
+				'wd_sattelite_theme_custom_background_args',
 				array(
 					'default-color' => 'ffffff',
 					'default-image' => '',
@@ -91,6 +92,9 @@ if ( ! function_exists( 'wp_theme_setup' ) ) :
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
+		// Disables new Widgets Block Editor
+		remove_theme_support( 'widgets-block-editor' );
+		
 		/**
 		 * Add support for core custom logo.
 		 *
@@ -107,7 +111,7 @@ if ( ! function_exists( 'wp_theme_setup' ) ) :
 		);
 	}
 endif;
-add_action( 'after_setup_theme', 'wp_theme_setup' );
+add_action( 'after_setup_theme', 'wd_sattelite_theme_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -116,46 +120,45 @@ add_action( 'after_setup_theme', 'wp_theme_setup' );
  *
  * @global int $content_width
  */
-function wp_theme_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'wp_theme_content_width', 640 );
+function wd_sattelite_theme_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'wd_sattelite_theme_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'wp_theme_content_width', 0 );
+add_action( 'after_setup_theme', 'wd_sattelite_theme_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function wp_theme_widgets_init() {
+function wd_sattelite_theme_widgets_init() {
 	register_sidebar(
 		array(
 			'name'          => esc_html__( 'Sidebar', 'wds-theme' ),
-			'id'            => 'sidebar-1',
+			'id'            => 'sidebar',
 			'description'   => esc_html__( 'Add widgets here.', 'wds-theme' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
 		)
 	);
 }
-add_action( 'widgets_init', 'wp_theme_widgets_init' );
+add_action( 'widgets_init', 'wd_sattelite_theme_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function wp_theme_scripts() {
+function wd_sattelite_theme_scripts() {
 	wp_enqueue_style( 'wds-theme-style', get_stylesheet_uri(), array(), wp_rand() );
 	wp_style_add_data( 'wds-theme-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'wds-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-	wp_enqueue_script('main-bundle', get_template_directory_uri() . '/js/main.js', array('wp-element'), wp_rand(), true);
+	wp_enqueue_script('main-bundle', get_template_directory_uri() . '/js/main.js', array(), wp_rand(), true);
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'wp_theme_scripts' );
+add_action( 'wp_enqueue_scripts', 'wd_sattelite_theme_scripts' );
 
 
 /**
@@ -183,4 +186,51 @@ require get_template_directory() . '/inc/customizer.php';
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
+}
+
+
+function related_post() {
+
+	$post_id = get_the_ID();
+	$cat_ids = array();
+	$categories = get_the_category( $post_id );
+
+	if(!empty($categories) && !is_wp_error($categories)):
+			foreach ($categories as $category):
+					array_push($cat_ids, $category->term_id);
+			endforeach;
+	endif;
+
+	$current_post_type = get_post_type($post_id);
+
+	$query_args = array( 
+			'category__in'   => $cat_ids,
+			'post_type'      => $current_post_type,
+			'post__not_in'    => array($post_id),
+			'posts_per_page'  => '5',
+			'orderby' => 'rand'
+	 );
+
+	$related_cats_post = new WP_Query( $query_args );
+
+	if($related_cats_post->have_posts()): ?>
+		<section id="related-posts" class="widget">
+			<h3 class="widget-title">Popular posts</h3>
+			<ul>
+				<?php while($related_cats_post->have_posts()): $related_cats_post->the_post(); ?>
+					<li>
+						<a href="<?php the_permalink(); ?>">
+							<?php the_post_thumbnail('thumbnail'); ?>
+							<span><?php the_title(); ?></span>
+						</a>
+					</li>
+				<?php endwhile; ?>
+				</ul>
+			<?php 
+				wp_reset_postdata(); 
+			?>
+		</section>
+	<?php 
+	endif;
+
 }

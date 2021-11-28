@@ -4,14 +4,13 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package WP_Theme
+ * @package WD_Sattelite_Theme
  */
 
 get_header();
 ?>
 
 	<main id="primary" class="site-main">
-
 		<section class="error-404 not-found">
 			<header class="page-header">
 				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'wds-theme' ); ?></h1>
@@ -45,8 +44,8 @@ get_header();
 
 					<?php
 					/* translators: %1$s: smiley */
-					$wp_theme_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'wds-theme' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$wp_theme_archive_content" );
+					$wd_sattelite_theme_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'wds-theme' ), convert_smilies( ':)' ) ) . '</p>';
+					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$wd_sattelite_theme_archive_content" );
 
 					the_widget( 'WP_Widget_Tag_Cloud' );
 					?>
