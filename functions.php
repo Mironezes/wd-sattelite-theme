@@ -188,8 +188,30 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * Register ACF Options Page.
+ *
+ * @link https://www.advancedcustomfields.com/resources/options-page/
+ */
+add_filter('acf/settings/remove_wp_meta_box', '__return_false');
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Theme General Settings',
+		'menu_title'	=> 'Theme Settings',
+		'menu_slug' 	=> 'wdst-general-settings',
+		'capability'	=> 'edit_posts',
+		'icon_url' => 'dashicons-edit-large',
+		'redirect'		=> false
+	));
+	
+	
+}
 
-function related_post() {
+/**
+ * Popualar Posts Widget
+ */
+function wdst_related_post() {
 
 	$post_id = get_the_ID();
 	$cat_ids = array();
@@ -234,3 +256,4 @@ function related_post() {
 	endif;
 
 }
+

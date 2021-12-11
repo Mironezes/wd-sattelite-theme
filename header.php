@@ -28,14 +28,14 @@
 		<div class="container">
 			<div class="header-logo">
 				<?php if( is_home() ) : ?>
-					<span>Kelleysbookkeeping.com</span>
+					<span><?= get_field('logo_text','option'); ?></span>
 				<?php else: ?>
-					<a href="<?= site_url('/');?>">Kelleysbookkeeping.com</a>
+					<a href="<?= site_url('/');?>"><?= get_field('logo_text','option'); ?></a>
 				<?php endif; ?>
 			</div>
 			<nav id="header-navigation" class="navigation">
 				<div id="mobile-menu-toggler">
-					<span id="mobile-menu-open"><img src="<?= get_template_directory_uri() ;?>/images/burger-icon.svg" alt="icon"></span>
+					<span id="mobile-menu-open">Menu <img src="<?= get_template_directory_uri() ;?>/images/burger-icon.svg" alt="icon"></span>
 					<span id="mobile-menu-close"><img src="<?= get_template_directory_uri() ;?>/images/close-icon.svg" alt="icon"></span>
 				</div>
 				<?php

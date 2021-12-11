@@ -22,7 +22,7 @@ get_header();
 
 	<main class="site-content">
 		<div class="container">
-			<main class="site-content-main">
+			<section class="site-content-main">
 					<?php
 					while ( have_posts() ) :
 						the_post(); 
@@ -42,7 +42,9 @@ get_header();
 							);
 							?>
 					</section>
-			</main>	
+					<?php comments_template();?>
+
+			</section>	
 			<?php get_sidebar(); ?>
 		</div>
 	</main>

@@ -17,7 +17,7 @@
 		<?php
 			$raw = get_the_content();
 			$filtered_content = strip_tags(preg_replace('#<div[^>]*id="toc"[^>]*>.*?</div>#is', '', $raw));
-			$excerpt = trim(substr($filtered_content, 0, 300)); ?>
+			$excerpt = trim(mb_substr($filtered_content, 0, 250)); ?>
 			<p class="post-excerpt"><?= $excerpt;?>... <a href="<?php the_permalink();?>">Read more</a></p>
 	</div><!-- .post-content -->
 </article>

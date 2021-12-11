@@ -18,7 +18,7 @@ get_header();
 
 <main class="single site-content">
 		<div class="container">
-			<main class="site-content-main">
+			<section class="site-content-main">
 					<?php
 					while ( have_posts() ) :
 						the_post(); 
@@ -27,7 +27,7 @@ get_header();
 					<?php
 					endwhile; // End of the loop.
 					?>
-			</main>	
+			</section>	
 			<?php get_sidebar(); ?>
 		</div>
 	</main>

@@ -31,7 +31,7 @@ if( is_author() ) {
 
 	<main class="site-content">
 		<div class="container">
-			<main class="site-content-main">
+			<section class="site-content-main">
 
 			<?php if( is_author() ): ?>
 					<?php 
@@ -84,7 +84,7 @@ if( is_author() ) {
 
 					endif;
 					?>
-			</main>	
+			</section>	
 			<?php get_sidebar(); ?>
 		</div>
 	</main>

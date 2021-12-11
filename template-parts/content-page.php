@@ -12,8 +12,8 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<header class="page-header">
 			<?php 
-				the_title( '<h1 class="page-title">', '</h1>' );
-				if ( function_exists('yoast_breadcrumb') ) {
+				the_title( '<h1>', '</h1>' );
+				if ( function_exists('yoast_breadcrumb') && !is_front_page() ) {
 					yoast_breadcrumb( '<div id="site-breadcrumbs">','</div>' );
 				}
 			?>

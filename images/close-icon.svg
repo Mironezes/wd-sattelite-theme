@@ -13,7 +13,7 @@
    width="24.879999"
    version="1.1"
    id="svg4"
-   sodipodi:docname="test3.svg"
+   sodipodi:docname="close-icon.svg"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
   <metadata
      id="metadata10">
@@ -23,7 +23,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -39,19 +39,20 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="1017"
+     inkscape:window-height="1001"
      id="namedview6"
      showgrid="false"
      inkscape:zoom="25.573695"
      inkscape:cx="15.466931"
      inkscape:cy="12.3342"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg4" />
+     inkscape:current-layer="svg4"
+     inkscape:document-rotation="0" />
   <path
      d="M 22.508049,2.3813714 12.44,12.439999 m 0,0 L 2.3719499,22.498628 M 12.44,12.439999 l 6.753418,6.759745 3.305209,3.308306 M 12.44,12.439999 2.3813714,2.3719499"
-     stroke="#374151"
+     stroke="#000"
      stroke-linecap="round"
      stroke-linejoin="round"
      stroke-width="4.7439"

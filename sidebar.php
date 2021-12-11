@@ -15,7 +15,7 @@
 
 	<?php 
 	if(is_single() || is_archive() ) {
-		related_post(); 
+		wdst_related_post(); 
 	}
 	?>
 	

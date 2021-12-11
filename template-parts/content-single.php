@@ -19,8 +19,9 @@
   
   <section class="single-post-author-block">
   <?php 
+    $aurhor_id = get_the_author_meta('ID');
     $author_name = get_the_author_meta('first_name') . ' ' . get_the_author_meta('last_name');
-    $author_slug = "/author/" . get_the_author() . "/";
+    $author_slug =  get_author_posts_url($aurhor_id); 
   ?>
     <div class="author-image">
       <img src="<?= get_template_directory_uri();?>/images/author-preview.jpg" alt="author" width="48" height="48">

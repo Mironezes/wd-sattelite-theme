@@ -23,7 +23,10 @@ get_header();
 
 	<main id="home" class="site-content">
 		<div class="container">
-			<main class="site-content-main">
+			<section class="site-content-main">
+
+				
+
 				<section class="recent-posts">
 					<?php 
 					
@@ -44,7 +47,7 @@ get_header();
 								<div id="<?= $category->slug;?>" class="home recent-posts-block">
 									<div class="recent-post-header">
 										<h2><?= $category->name; ?></h2>
-										<a href="/<?= $category->slug;?>">See all posts ></a>
+										<a href="/<?= $category->slug;?>/">See all posts ></a>
 									</div>
 
 									<div class="recent-post-tiles">
@@ -76,7 +79,7 @@ get_header();
 						?>
 				</section>
 			</div>
-		</main><!-- #main -->
+		</section>
 		</div>
 	</main>
 <?php
