@@ -15,11 +15,24 @@
 get_header();
 ?>
 
+	<?php if(get_field('general_options_use_welcome_screen', 'option')) : ?>
 	<section id="welcome-screen" class="site-title">
 		<div class="container">
-			<h1>Self Study Guides to Learn Bookkeeping<br> and Accounting</h1>
+
+			<?php
+				$current_lang = null;
+
+				if(function_exists('pll_current_language')) :
+					$current_lang = pll_current_language();
+				?>
+					<h1><?= get_field('general_welcome_screen_text_' . $current_lang . '', 'option');?></h1>
+				<?php 
+				else : ?>
+					<h1><?= get_field('general_welcome_screen_text', 'option');?></h1>	
+				<?php endif; ?>
 		</div>
 	</section>
+	<?php endif; ?>
 
 	<main id="home" class="site-content">
 		<div class="container">

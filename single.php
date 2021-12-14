@@ -32,16 +32,21 @@ get_header();
 					endwhile; // End of the loop.
 					?>
 
-					<section class="single-post-navigation-block">
-						<?php 
-							the_post_navigation(
-								array(
-									'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous post:', 'wds-theme' ) . '</span> <span class="nav-title">%title</span>',
-									'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next post:', 'wds-theme' ) . '</span> <span class="nav-title">%title</span>',
-								)
-							);
-							?>
-					</section>
+					<?php
+
+					if(get_previous_post() || get_next_post()) : ?>
+						<section class="single-post-navigation-block">
+							<?php 
+								the_post_navigation(
+									array(
+										'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous post:', 'wds-theme' ) . '</span> <span class="nav-title">%title</span>',
+										'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next post:', 'wds-theme' ) . '</span> <span class="nav-title">%title</span>',
+									)
+								);
+								?>
+						</section>
+					<?php endif; ?>
+					
 					<?php comments_template();?>
 
 			</section>	
