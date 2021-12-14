@@ -1037,6 +1037,25 @@ span.page-numbers.current {
 
 
 
+/* Widget:  WP Recent Posts */
+.wp-block-latest-posts li {
+	margin-bottom: 10px;
+}
+.wp-block-latest-posts li:last-of-type {
+	margin-bottom: 0;
+}
+
+
+/* Widget:  WP Categories List */
+.wp-block-categories li {
+	margin-bottom: 10px;
+}
+.wp-block-categories li:last-of-type {
+	margin-bottom: 0;
+}
+
+
+
 /* Widget: Related posts */
 #related-posts ul {
 	margin: 0;
@@ -1235,6 +1254,7 @@ footer.site-footer  .container {
 }
 
 
+
 /* Widget: Search */
 .wp-block-search__label {
 	display: block;
@@ -1242,10 +1262,13 @@ footer.site-footer  .container {
 	font-size: 24px;
   font-weight: bold;
 }
+.wp-block-search__button {
+	margin-left: 5px;
+}
+
 
 
 /* Table of contents */
-
 .toctitle {
 	width: 50%;
 	margin: 0;
