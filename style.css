@@ -39,6 +39,10 @@ html {
 .aligncenter {
 	margin: 0 auto;
 }
+img {
+	max-width: 100%;
+	height: auto;
+}
 .screen-reader-text {
 	display: none;
 }
@@ -99,6 +103,11 @@ header.site-header .container {
 	}
 }
 @media screen and (max-width: 991px) {
+	.site-header.fixed {
+		position: fixed;
+    width: 100%;
+    top: 0;
+	}
 	header.site-header {
 		padding: 25px 0;
 	}
@@ -125,6 +134,9 @@ header.site-header .container {
 	.header-logo {
 		margin-bottom: 25px;
 	}
+	.site-header.fixed .header-logo {
+		display: none;	
+	}
 	.header-logo a, .header-logo span {
     font-size: 1.5rem;
     display: block;
@@ -143,8 +155,8 @@ header.site-header .container {
 	position: relative;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 }
+
 
 
 /* Header navigation */
@@ -179,7 +191,7 @@ nav#header-navigation ul li:last-of-type a {
 }
 @media screen and (max-width: 991px) {
 	nav#header-navigation {
-		width: 100%;
+		width: 100px;
 		flex-direction: column;
     align-items: flex-end;
     display: flex;
@@ -223,6 +235,14 @@ nav#header-navigation ul li:last-of-type a {
 		height: 21px;
 		margin-left: 10px;
 	}
+	.header-navigation-n-lang {
+		flex-direction: row-reverse;
+    width: 100%;
+    justify-content: center;
+	}
+	.has-polylang .header-navigation-n-lang {
+		justify-content: space-between;
+	}
 }
 @media (min-width: 992px) {
 	#mobile-menu-toggler {
@@ -255,6 +275,19 @@ nav#header-navigation ul li:last-of-type a {
 #mobile-navigation.active {
 	display: flex;
 	flex-direction: column;
+}
+#mobile-navigation.fixed {
+	position: fixed;
+	width: 100%;
+	z-index: 2;
+	top: 75px;
+}
+#mobile-navigation ul {
+	margin-left: 0;
+  padding-left: 0;
+}
+#mobile-navigation ul li {
+	text-align: center;
 }
 
 
@@ -294,9 +327,9 @@ nav#header-navigation ul li:last-of-type a {
 li.pll-current-lang span {
 	font-weight: bold;
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media screen and (max-width: 991px) {
 	.pll-lang-switcher {
-		margin-bottom: 20px;
+		margin-left: 0;
 	}
 }
 
@@ -1267,12 +1300,22 @@ footer.site-footer  .container {
 }
 
 
+/* Table */
+table {
+	position: relative;
+}
+table td {
+	border: 1px solid;
+}
+
+
 
 /* Table of contents */
 .toctitle {
 	width: 50%;
 	margin: 0;
-	font-size: 1.45rem;
+	font-size: 1.65rem;
+	font-weight: bold;
 }
 .toc_list {
 	background: #f9f9f9;

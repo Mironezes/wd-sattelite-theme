@@ -1,9 +1,25 @@
 function Init() {
+  const header = document.querySelector('.site-header');
   const main_nav = document.querySelector('#header-navigation');
   const mobile_menu_toggler = main_nav.querySelector('#mobile-menu-toggler');
   const back_to_top_btn = document.querySelector('#site-back-to-top');
   const mobile_nav = document.querySelector('#mobile-navigation');
   const toc_list = Array.from(document.querySelectorAll('.toc_list a'));
+
+
+  function fixedMobileMenu() {
+    if(window.pageYOffset > header.offsetTop) {
+      mobile_nav.classList.add('fixed');
+      header.classList.add('fixed');
+    }
+    else {
+      mobile_nav.classList.remove('fixed');
+      header.classList.remove('fixed');
+    }
+
+  }
+  window.addEventListener('scroll', fixedMobileMenu);
+
 
   function smoothTOC(e) {
     e.preventDefault()

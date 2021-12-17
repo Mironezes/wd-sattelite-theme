@@ -27,13 +27,13 @@
 				<div class="dmca"><a href="<?= get_field('dmca_link', 'option');?>" title="Content Protection by DMCA.com" class="dmca-badge"><img class="lazy" src="<?= get_field('dmca_image_url', 'option');?>" alt="Content Protection by DMCA.com" width="100" height="20"></a></div>
 				<span class="copyright"><?= get_field('copyright', 'option');?></span>
 			</div>
-			<span id="site-back-to-top"><img src="<?= get_template_directory_uri();?>/images/back-to-top-icon.svg" alt="back-to-top"></span>
+			<span id="site-back-to-top"><img src="<?= get_template_directory_uri();?>/images/back-to-top-icon.svg" width="46" height="25" alt="back-to-top"></span>
 		</div>
 	</footer><!-- footer -->
 </div><!-- #page -->
 
 <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
-<?php
+<?php 
 wp_footer(); ?>
 
 </body>

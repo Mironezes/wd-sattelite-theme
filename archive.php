@@ -40,7 +40,13 @@ if( is_author() ) {
 
 				<div class="site-author-info">
 					<div class="site-author-info-image">
-						<img src="<?= get_template_directory_uri();?>/images/author.jpg" alt="author">
+						<?php $author_img = get_field('general_author_image', 'option');?>
+						<img 
+							src="<?= $author_img['url'];?>" 
+							width="<?= $author_img['width'];?>" 
+							height="<?= $author_img['height'];?>"
+							alt="<?= $author_img['alt'];?>"
+						>
 					</div>
 					<div class="site-author-info-desc">
 						<h2><?= $author_name;?></h2>

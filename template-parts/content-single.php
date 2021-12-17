@@ -24,7 +24,14 @@
     $author_slug =  get_author_posts_url($aurhor_id); 
   ?>
     <div class="author-image">
-      <img src="<?= get_template_directory_uri();?>/images/author-preview.jpg" alt="author" width="48" height="48">
+
+    <?php $author_img = get_field('general_author_image_preview', 'option');?>
+			<img 
+				src="<?= $author_img['url'];?>" 
+				width="<?= $author_img['width'];?>" 
+				height="<?= $author_img['height'];?>"
+				alt="<?= $author_img['alt'];?>"
+      >
     </div>
     <div class="publication-info">
 		  <span class="author-name">Published by <?= $author_name ?> </span>
