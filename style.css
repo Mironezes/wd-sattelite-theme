@@ -394,6 +394,9 @@ li.pll-current-lang span {
 	text-shadow: 1px 1px #222;
 }
 @media screen and (max-width: 550px) {
+	.site-title {
+		padding: 60px 0;
+	}
 	.site-title h1 {
 		font-size: 2.4rem;
 	}
@@ -560,6 +563,7 @@ li.pll-current-lang span {
 	display: block;
 	width: calc(30% - 25px);
 	height: 150px;
+	border: 0;
 }
 .archive-post-tile .post-thumbnail img {
 	width: 100%;
@@ -731,6 +735,9 @@ span.page-numbers.current {
   margin-bottom: 0;
 }
 @media screen and (max-width: 550px) {
+	.single .site-title {
+		padding: 60px 0;
+	}
 	.single .site-title h1 {
 		font-size: 2rem;
 	}

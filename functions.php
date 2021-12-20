@@ -181,12 +181,6 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
 
 /**
  * Register ACF Options Page.
@@ -257,3 +251,22 @@ function wdst_related_post() {
 
 }
 
+
+/**
+ * Removes WP srcset from images
+ */
+function wdst_remove_srcset_from_images() {
+	return 1;
+}
+add_filter('max_srcset_image_width', 'wdst_remove_srcset_from_images');
+
+
+/**
+ * Fullfits plugins jQuery dependencies
+ */
+add_action( 'wp_enqueue_scripts', 'plugin_scripts_dependencies', 99 );
+function plugin_scripts_dependencies() {
+	if((is_single() || is_archive()) && (shortcode_exists('yop_poll') || class_exists('Rate_My_Post'))) {
+		wp_enqueue_script( 'jquery', get_template_directory_uri(). '/js/jquery.min.js', array(), true  );
+	}
+}
