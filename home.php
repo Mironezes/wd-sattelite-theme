@@ -17,10 +17,10 @@ get_header();
 $current_lang = null;
 if(function_exists('pll_current_language')) $current_lang = pll_current_language();
 
-$show_categories_list = get_field('homepage_blog_layout_categories_list', 'option');
+$show_categories_list = get_field('homepage_blog_categories_list', 'option');
 $show_categories_list = !empty($show_categories_list) ? $show_categories_list[0] : 0;
 
-$show_sidebar = get_field('homepage_blog_layout_sidebar', 'option');
+$show_sidebar = get_field('homepage_blog_sidebar', 'option');
 $show_sidebar = !empty($show_sidebar) ? $show_sidebar[0] : 0;
 $has_sidebar = $show_sidebar ? 'has-sidebar' : '';
 ?> 

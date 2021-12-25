@@ -6,19 +6,23 @@ function Init() {
   const mobile_nav = document.querySelector('#mobile-navigation');
   const toc_list = Array.from(document.querySelectorAll('.toc_list a'));
 
-
   function fixedMobileMenu() {
-    if(window.pageYOffset > header.offsetTop) {
-      mobile_nav.classList.add('fixed');
-      header.classList.add('fixed');
+    if(window.matchMedia("(max-width: 1240px)").matches) {
+      if(window.pageYOffset > header.offsetTop) {
+        mobile_nav.classList.add('fixed');
+        header.classList.add('fixed');
+      }
+      else {
+        mobile_nav.classList.remove('fixed');
+        header.classList.remove('fixed');
+      }
     }
     else {
-      mobile_nav.classList.remove('fixed');
-      header.classList.remove('fixed');
+      mobile_nav.classList.remove('active');
     }
-
   }
   window.addEventListener('scroll', fixedMobileMenu);
+  window.addEventListener('resize', fixedMobileMenu);
 
 
   function smoothTOC(e) {

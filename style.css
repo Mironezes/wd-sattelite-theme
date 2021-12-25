@@ -100,7 +100,7 @@ header.site-header {
 	background-color: #fff;
 	position: relative;
 	z-index: 3;
-	margin-top: 25px;
+	padding-top: 25px;
 }
 header.site-header .container {
 	flex-direction: column;
@@ -124,6 +124,7 @@ header.site-header .header-navigation-n-lang .container {
     width: 100%;
     top: 0;
 		margin-top: 0;
+		padding-top: 0;
 	}
 }
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -280,7 +281,7 @@ nav#header-navigation ul li.current-menu-item a {
 		justify-content: space-between;
 	}
 }
-@media (min-width: 992px) {
+@media (min-width: 1240px) {
 	#mobile-menu-toggler {
 		display: none;
 	}
@@ -289,7 +290,7 @@ nav#header-navigation ul li.current-menu-item a {
 /* Mobile Navigation */
 #mobile-navigation {
 	display: none;
-	background: #5bc0de;
+	background: #428bca;
 }
 #mobile-navigation ul li {
 	list-style: none;
@@ -527,10 +528,7 @@ body.background-img.single-post #site-breadcrumbs:before  {
 	line-height: 27px;
 }
 .recent-post-header a {
-	padding-bottom: 2px;
-	font-size: 1.15rem;
-	line-height: 27px;
-	color: #293187;
+	padding-top: 10px;
 	text-decoration: none;
 }
 .recent-post-tiles {
@@ -557,7 +555,8 @@ body.background-img.single-post #site-breadcrumbs:before  {
 }
 .recent-post-tile a {
 	color: #000;
-	text-decoration: none;	
+	text-decoration: none;
+	border-bottom: 0;	
 }
 .recentpost-tile-image {
 	position: relative;
@@ -602,7 +601,7 @@ body.background-img.single-post #site-breadcrumbs:before  {
 		flex-direction: column;
 	}
 	.recent-post-tile {
-		width: 100%;
+		width: 100% !important;
 		margin-bottom: 35px;
 	}
 }
@@ -620,7 +619,26 @@ body.background-img.single-post #site-breadcrumbs:before  {
 	margin-bottom: 65px;
 	text-align: center;
 }
+.archive-posts {
+	position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
+
+/* Archives: Cards Layout */
+.archive-posts .recent-post-tile {
+	width: calc(50% - 25px);
+	margin-bottom: 35px;
+}
+.archive-posts .recent-post-tile .rmp-archive-results-widget {
+	display: block;
+	margin-top: 10px;
+	padding-left: 0;
+	margin-left: 0;
+	margin-bottom: 0;
+}
 
 
 /* Archives: Posts Tiles */
@@ -665,6 +683,9 @@ body.background-img.single-post #site-breadcrumbs:before  {
 	margin-top: 8px;
 	margin-left: 0;
 }
+.rmp-archive-results-widget span {
+	display: none;
+}
 .archive-post-tile .single-post-info {
 	font-size: .9rem;
 }
@@ -682,6 +703,9 @@ body.background-img.single-post #site-breadcrumbs:before  {
 	color: #000;
 }
 @media screen and (max-width: 550px) {
+	.archive-posts .recent-post-tile {
+		width: 100%;
+	}
 	.archive-post-tile {
 		flex-direction: column;
 	}
@@ -744,11 +768,13 @@ body.background-img.single-post #site-breadcrumbs:before  {
 
 /* Pagination */
 .navigation.pagination {
-	width: fit-content;
+	width: 100%;
 	margin: 0 auto;
 	margin-top: 50px;
 }
 .nav-links {
+	width: fit-content;
+	margin: 0 auto;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -773,7 +799,7 @@ span.page-numbers {
 	background-color: #000;
 }
 span.page-numbers.current {
-	background-color:#5bc0de;
+	background-color:#428bca;
 }
 .page-numbers.next,
 .page-numbers.prev { 
@@ -1038,7 +1064,7 @@ body.background-img.single .site-title h1 {
 	border: 0;
 	border-radius: 0px;
 	color: #fff;
-	background: #5bc0de;
+	background: #428bca;
 	cursor: pointer;
 }
 #commentform textarea {
@@ -1105,7 +1131,7 @@ body.background-img.single .site-title h1 {
 	position: relative;
 	display: flex;
 	width: fit-content;
-	background: #5bc0de;
+	background: #428bca;
 	border-radius: 0px;
 	padding: 5px 10px;
 	cursor: pointer;
@@ -1258,7 +1284,7 @@ body.background-img.single .site-title h1 {
 .button.basic-vote-button {
 	width: 65% !important;
 	text-align: center;
-	background: #5bc0de !important;
+	background: #428bca !important;
 	border-radius: 0px !important;
 }
 
@@ -1503,8 +1529,8 @@ table td {
 	padding: 12px 30px;
 	text-align: center;
 	text-decoration: none;
-	color: #fff;
-	background-color: #5bc0de;
+	color: #fff !important;
+	background-color: #428bca;
 	border-radius: 0px;
 }
 @media screen and (max-width: 767px) {

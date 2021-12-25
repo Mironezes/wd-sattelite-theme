@@ -261,56 +261,6 @@ acf_add_local_field_group(array(
 			'endpoint' => 1,
 		),
 		array(
-			'key' => 'field_61c6edc798ad7',
-			'label' => 'Homepage Title',
-			'name' => '',
-			'type' => 'accordion',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => array(
-				array(
-					array(
-						'field' => 'field_61b8f7aadde82',
-						'operator' => '!=',
-						'value' => 'true',
-					),
-				),
-			),
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'open' => 0,
-			'multi_expand' => 0,
-			'endpoint' => 0,
-		),
-		array(
-			'key' => 'field_61c6edd398ad8',
-			'label' => '#Homepage	Title',
-			'name' => '',
-			'type' => 'accordion',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => array(
-				array(
-					array(
-						'field' => 'field_61b8f7aadde82',
-						'operator' => '!=',
-						'value' => 'true',
-					),
-				),
-			),
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'open' => 0,
-			'multi_expand' => 0,
-			'endpoint' => 1,
-		),
-		array(
 			'key' => 'field_61bcf6d2510e3',
 			'label' => 'Author',
 			'name' => '',
@@ -602,13 +552,45 @@ acf_add_local_field_group(array(
 			'layout' => 'block',
 			'sub_fields' => array(
 				array(
+					'key' => 'field_61c7080e824df',
+					'label' => '',
+					'name' => 'enabled',
+					'type' => 'checkbox',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'choices' => array(
+						1 => 'Use background image',
+					),
+					'allow_custom' => 0,
+					'default_value' => array(
+					),
+					'layout' => 'vertical',
+					'toggle' => 0,
+					'return_format' => 'value',
+					'save_custom' => 0,
+				),
+				array(
 					'key' => 'field_61b5000e9127f',
 					'label' => 'Desktop WEBP',
 					'name' => 'desktop_webp',
 					'type' => 'image',
 					'instructions' => '',
 					'required' => 0,
-					'conditional_logic' => 0,
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => 'field_61c7080e824df',
+								'operator' => '==',
+								'value' => '1',
+							),
+						),
+					),
 					'wrapper' => array(
 						'width' => '',
 						'class' => '',
@@ -632,7 +614,15 @@ acf_add_local_field_group(array(
 					'type' => 'image',
 					'instructions' => '',
 					'required' => 0,
-					'conditional_logic' => 0,
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => 'field_61c7080e824df',
+								'operator' => '==',
+								'value' => '1',
+							),
+						),
+					),
 					'wrapper' => array(
 						'width' => '',
 						'class' => '',
@@ -656,7 +646,15 @@ acf_add_local_field_group(array(
 					'type' => 'image',
 					'instructions' => '',
 					'required' => 0,
-					'conditional_logic' => 0,
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => 'field_61c7080e824df',
+								'operator' => '==',
+								'value' => '1',
+							),
+						),
+					),
 					'wrapper' => array(
 						'width' => '',
 						'class' => '',
@@ -680,7 +678,15 @@ acf_add_local_field_group(array(
 					'type' => 'image',
 					'instructions' => '',
 					'required' => 0,
-					'conditional_logic' => 0,
+					'conditional_logic' => array(
+						array(
+							array(
+								'field' => 'field_61c7080e824df',
+								'operator' => '==',
+								'value' => '1',
+							),
+						),
+					),
 					'wrapper' => array(
 						'width' => '',
 						'class' => '',
@@ -932,7 +938,7 @@ acf_add_local_field_group(array(
 		array(
 			'key' => 'field_61add9e9131a7',
 			'label' => '',
-			'name' => 'homepage_blog_layout',
+			'name' => 'homepage_blog',
 			'type' => 'group',
 			'instructions' => '',
 			'required' => 0,
@@ -944,39 +950,6 @@ acf_add_local_field_group(array(
 			),
 			'layout' => 'block',
 			'sub_fields' => array(
-				array(
-					'key' => 'field_61addaaca74e1',
-					'label' => 'Posts layout',
-					'name' => 'posts_layout',
-					'type' => 'select',
-					'instructions' => '',
-					'required' => 0,
-					'conditional_logic' => array(
-						array(
-							array(
-								'field' => 'field_61adde371729b',
-								'operator' => '!=',
-								'value' => '1',
-							),
-						),
-					),
-					'wrapper' => array(
-						'width' => '',
-						'class' => '',
-						'id' => '',
-					),
-					'choices' => array(
-						'fullwidth' => 'Full-Width',
-						'three_per_row' => 'Three per row',
-					),
-					'default_value' => 'fullwidth',
-					'allow_null' => 0,
-					'multiple' => 0,
-					'ui' => 0,
-					'return_format' => 'value',
-					'ajax' => 0,
-					'placeholder' => '',
-				),
 				array(
 					'key' => 'field_61adde371729b',
 					'label' => 'Categories list',
@@ -1074,7 +1047,7 @@ acf_add_local_field_group(array(
 		array(
 			'key' => 'field_61add9fb131a8',
 			'label' => '',
-			'name' => 'archive_blog_layout',
+			'name' => 'archive_blog',
 			'type' => 'group',
 			'instructions' => '',
 			'required' => 0,
@@ -1101,7 +1074,7 @@ acf_add_local_field_group(array(
 					),
 					'choices' => array(
 						'fullwidth' => 'Full-Width',
-						'three_per_row' => 'Three per row',
+						'cards' => 'Cards',
 					),
 					'default_value' => 'fullwidth',
 					'allow_null' => 0,

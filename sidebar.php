@@ -13,14 +13,14 @@
 
 
 	<?php
-		if(function_exists('pll_the_languages')) {
+		// if(function_exists('pll_the_languages')) {
 
-			if(pll_current_language() === 'en') {
-				if(shortcode_exists('yop_poll')) {
-					echo do_shortcode('[yop_poll id="1"]'); 
-				}
-			}
-		}
+		// 	if(pll_current_language() === 'en') {
+		// 		if(shortcode_exists('yop_poll')) {
+		// 			echo do_shortcode('[yop_poll id="1"]'); 
+		// 		}
+		// 	}
+		// }
 	?>	
 
 	<?php dynamic_sidebar( 'sidebar' ); ?>

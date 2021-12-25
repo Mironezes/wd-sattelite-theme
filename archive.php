@@ -61,10 +61,9 @@ if( is_author() ) {
 				<?php endif; ?>
 			<?php endif;?>
 
-
-
-
-					<?php if ( have_posts() ) :
+				
+			<div class="archive-posts">
+				<?php if ( have_posts() ) :
 						/* Start the Loop */
 						while ( have_posts() ) :
 							the_post();
@@ -97,6 +96,7 @@ if( is_author() ) {
 
 					endif;
 					?>
+			</div>
 			</section>	
 			<?php get_sidebar(); ?>
 		</div>
