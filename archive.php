@@ -9,25 +9,19 @@
 
 get_header();
 
+$show_background_image = get_field('main_background_image_enabled', 'option');
+
 if( is_author() ) {
 	$author_name = get_the_author_meta('first_name') . ' ' . get_the_author_meta('last_name');
 	$author_desc = get_the_author_meta('user_description');
 }
 ?>
 
-	<section class="site-title">
-		<div class="container">
-			<?php if( is_author() ) : ?>
-			<h1>Archives: <?= $author_name; ?></h1>
-			<?php else : ?>
-				<h1><?= single_term_title(); ?></h1>
-			<?php endif;
-				if ( function_exists('yoast_breadcrumb') ) {
-					yoast_breadcrumb( '<div id="site-breadcrumbs">','</div>' );
-				}
-			?>
-		</div>
-	</section>
+	<?php 
+		if($show_background_image) {
+			include_once(__DIR__ . '/inc/site-title.php'); 
+		}
+	?>
 
 	<main class="site-content">
 		<div class="container">
@@ -54,7 +48,20 @@ if( is_author() ) {
 					</div>
 
 				</div>
+			<?php else: ?>
+				<?php if(!$show_background_image) : ?>
+					<div class="archive-heading">
+						<h1><?= single_term_title();?></h1>
+						<?php 				
+							if ( function_exists('yoast_breadcrumb') ) {
+								yoast_breadcrumb( '<div id="site-breadcrumbs">','</div>' );
+							}
+						?>
+					</div>
+				<?php endif; ?>
 			<?php endif;?>
+
+
 
 
 					<?php if ( have_posts() ) :

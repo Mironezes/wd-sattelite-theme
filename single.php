@@ -8,17 +8,15 @@
  */
 
 get_header();
+
+$show_background_image = get_field('main_background_image_enabled', 'option');
 ?>
-	<section class="site-title">
-		<div class="container">
-			<?php the_title( '<h1>', '</h1>' ); ?>
-			<?php
-				if ( function_exists('yoast_breadcrumb') ) {
-					yoast_breadcrumb( '<div id="site-breadcrumbs">','</div>' );
-				}
-			?>
-		</div>
-	</section>
+
+	<?php 
+		if($show_background_image) {
+			include_once(__DIR__ . '/inc/site-title.php'); 
+		}
+	?>
 
 	<main class="site-content">
 		<div class="container">

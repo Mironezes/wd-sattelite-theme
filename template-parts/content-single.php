@@ -9,8 +9,21 @@
 
 ?>
 
+<?php 
+  $show_background_image = get_field('main_background_image_enabled', 'option');
+?>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<section class="single-post-content">
+    <?php if(!$show_background_image) : ?>
+      <h1><?= get_the_title();?></h1>
+      <?php 				
+        if ( function_exists('yoast_breadcrumb') ) {
+					yoast_breadcrumb( '<div id="site-breadcrumbs">','</div>' );
+				}
+      ?>
+    <?php endif; ?>
+
 		<?php
 		  the_content();
 		?>
