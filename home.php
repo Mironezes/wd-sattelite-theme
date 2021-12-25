@@ -13,86 +13,56 @@
  */
 
 get_header();
-?>
+
+$current_lang = null;
+if(function_exists('pll_current_language')) $current_lang = pll_current_language();
+
+$show_categories_list = get_field('homepage_blog_layout_categories_list', 'option');
+$show_categories_list = !empty($show_categories_list) ? $show_categories_list[0] : 0;
+
+$show_sidebar = get_field('homepage_blog_layout_sidebar', 'option');
+$show_sidebar = !empty($show_sidebar) ? $show_sidebar[0] : 0;
+$has_sidebar = $show_sidebar ? 'has-sidebar' : '';
+?> 
+
 
 	<?php if(get_field('general_options_use_welcome_screen', 'option')) : ?>
-	<section id="welcome-screen" class="site-title">
-		<div class="container">
-
-			<?php
-				$current_lang = null;
-
-				if(function_exists('pll_current_language')) :
-					$current_lang = pll_current_language();
-				?>
-					<h1><?= get_field('general_welcome_screen_text_' . $current_lang . '', 'option');?></h1>
-				<?php 
-				else : ?>
-					<h1><?= get_field('general_welcome_screen_text', 'option');?></h1>	
-				<?php endif; ?>
-		</div>
-	</section>
-	<?php endif; ?>
-
-	<main id="home" class="site-content">
-		<div class="container">
-			<section class="site-content-main">
-
-				
-
-				<section class="recent-posts">
+		<section id="welcome-screen" class="site-title">
+			<div class="container">
+					<?php if($current_lang) : ?>
+						<h1><?= get_field('general_welcome_screen_text_' . $current_lang . '', 'option');?></h1>
 					<?php 
-					
-						$cat_args=array('orderby' => 'name','order' => 'ASC');
-						$categories=get_categories($cat_args);
-
-						foreach($categories as $category) : 
-
-							$args=array(
-								'showposts' => 4,
-								'category__in' => array($category->term_id),
-								'ignore_sticky_posts' => 1
-							);
-
-							$posts = get_posts($args);
-							if ($posts) : ?>
-
-								<div id="<?= $category->slug;?>" class="home recent-posts-block">
-									<div class="recent-post-header">
-										<h2><?= $category->name; ?></h2>
-										<a href="/<?= $category->slug;?>/">See all posts ></a>
-									</div>
-
-									<div class="recent-post-tiles">
-										<?php
-											foreach($posts as $post) {
-												setup_postdata($post); ?>
-												<div class="recent-post-tile">
-													<div class="recentpost-tile-image">
-														<a href="<?php the_permalink() ?>">
-															<?php the_post_thumbnail('medium'); ?>
-														</a>
-													</div>
-													<div class="recent-post-tile-content">
-														<?php
-															$title = wp_trim_words(get_the_title(), 8, '...'); 
-															$excerpt = wp_trim_words(get_the_excerpt(), 16, '...');
-														?>
-														<h3><a href="<?php the_permalink() ?>"><?= $title; ?></a></h3>
-														<p><?= $excerpt ?></p>
-														<a href="<?php the_permalink() ?>" class="read-more">Read more</a>
-													</div>
-												</div>
-												<?php 
-											}; ?>
-									</div>
-								</div>
-						<?php endif;  
-						endforeach;
-						?>
-				</section>
+					else : ?>
+						<h1><?= get_field('general_welcome_screen_text', 'option');?></h1>	
+					<?php endif; ?>
 			</div>
 		</section>
+	<?php endif; ?>
+
+	<main id="home" class="site-content <?= $has_sidebar;?>">
+		<div class="container">
+			<section class="site-content-main">
+				<?php if(!$show_categories_list) : ?>
+					<?php if($current_lang) : ?>
+						<h1><?= get_field('homepage_h1_' . $current_lang . '', 'option');?></h1>
+						<?php 
+							else : ?>
+							<h1><?= get_field('homepage_h1_default', 'option');?></h1>	
+						<?php endif; 
+							if(is_paged() && function_exists('yoast_breadcrumb') ) {
+								yoast_breadcrumb( '<div id="site-breadcrumbs">','</div>' );
+							}
+						?>
+					<?php endif; ?>
+				<?php if($show_categories_list == 1) : ?>
+					<?php include_once(__DIR__ . '/inc/all-categories-tiles.php'); ?>
+				<?php else: ?>
+					<?php include_once(__DIR__ . '/inc/latest-posts-list.php'); ?>
+				<?php endif; ?>
+		</section>
+			<?php if($show_sidebar == 1) : ?>
+				<?php get_sidebar(); ?>
+			<?php endif; ?>
 		</div>
 	</main>
 <?php

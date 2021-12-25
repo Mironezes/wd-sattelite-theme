@@ -270,3 +270,4 @@ function plugin_scripts_dependencies() {
 		wp_enqueue_script( 'jquery', get_template_directory_uri(). '/js/jquery.min.js', array(), true  );
 	}
 }
+
