@@ -44,7 +44,7 @@ if( is_author() ) {
 
 				<div class="site-author-info">
 					<div class="site-author-info-image">
-						<img src="<?= get_template_directory_uri();?>/images/author.jpg" alt="author">
+						<img src="<?= get_template_directory_uri();?>/assets/author.jpg" alt="author">
 					</div>
 					<div class="site-author-info-desc">
 						<h2><?= $author_name;?></h2>

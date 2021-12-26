@@ -271,3 +271,8 @@ function plugin_scripts_dependencies() {
 	}
 }
 
+
+/**
+ * Theme translations with Polylang strings
+ */
+require_once(__DIR__ . '/app/pll_theme_strings.php');
