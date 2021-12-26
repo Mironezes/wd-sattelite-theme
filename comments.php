@@ -27,7 +27,7 @@ if ( post_password_required() ) {
 	if ( have_comments() ) :
 		?>
 		<h2 class="comments-title">
-			Comments List
+			<?= pll_e('Comments List');?>
 		</h2><!-- .comments-title -->
 
 		<?php the_comments_navigation(); ?>
@@ -49,13 +49,16 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
 			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'wds-theme' ); ?></p>
+			<p class="no-comments"><?= pll_e('Comments are closed');?></p>
 			<?php
 		endif;
 
 	endif; // Check for have_comments().
 
-	comment_form();
+
+	include_once(__DIR__ . '/inc/comment-form.php');
+
+
 	?>
 
 </section><!-- #comments -->

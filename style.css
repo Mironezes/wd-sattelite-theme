@@ -1414,6 +1414,9 @@ footer.site-footer  .container {
 .search h1 {
 	margin-top: 0;
 }
+.no-results.not-found {
+	margin-top: 65px;
+}
 
 
 
@@ -1551,3 +1554,4 @@ table td {
 		margin-bottom: 35px;
 	}
 }
+
