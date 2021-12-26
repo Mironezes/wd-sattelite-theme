@@ -19,7 +19,7 @@
       <div id="<?= $category->slug;?>" class="home recent-posts-block">
         <div class="recent-post-header">
           <h2><?= $category->name; ?></h2>
-          <a href="/<?= $category->slug;?>/">See all posts ></a>
+          <a href="/<?= $category->slug;?>/"><?= pll_e('See all posts');?></a>
         </div>
 
         <div class="recent-post-tiles">
@@ -39,7 +39,7 @@
                   ?>
                   <h3><a href="<?php the_permalink() ?>"><?= $title; ?></a></h3>
                   <p><?= $excerpt ?></p>
-                  <a href="<?php the_permalink() ?>" class="read-more">Read more</a>
+                  <a href="<?php the_permalink() ?>" class="read-more"><?= pll_e('Read more');?></a>
                 </div>
               </div>
               <?php 

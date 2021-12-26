@@ -37,8 +37,8 @@ $show_background_image = get_field('main_background_image_enabled', 'option');
 							<?php 
 								the_post_navigation(
 									array(
-										'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous post:', 'wds-theme' ) . '</span> <span class="nav-title">%title</span>',
-										'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next post:', 'wds-theme' ) . '</span> <span class="nav-title">%title</span>',
+										'prev_text' => '<span class="nav-subtitle">' . pll__('Previous post') . ':' . '</span> <span class="nav-title">%title</span>',
+										'next_text' => '<span class="nav-subtitle">' . pll__('Next post') . ':' . '</span> <span class="nav-title">%title</span>',
 									)
 								);
 								?>

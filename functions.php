@@ -231,7 +231,7 @@ function wdst_related_post() {
 
 	if($related_cats_post->have_posts()): ?>
 		<section id="related-posts" class="widget">
-			<h3 class="widget-title">Popular posts</h3>
+			<h3 class="widget-title"><?= pll_e('Popular posts');?></h3>
 			<ul>
 				<?php while($related_cats_post->have_posts()): $related_cats_post->the_post(); ?>
 					<li>

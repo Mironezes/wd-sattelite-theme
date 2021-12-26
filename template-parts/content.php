@@ -12,18 +12,19 @@
 <?php 
 
 $archive_layout = get_field('archive_blog_posts_layout', 'option');
+global $post;
 
 if($archive_layout === 'fullwidth') : ?>
 	<article id="post-<?php the_ID(); ?>" class="archive-post-tile">
 		<?php wd_sattelite_theme_post_thumbnail(); ?>
 		<div class="post-content">
 			<?php the_title( '<h2 class="post-title"><a href="' . esc_url( get_permalink() ) . '">', '</a></h2>' );?>
-			<span class="post-info"><?= get_the_date();  wd_sattelite_theme_posted_by();?></span>
+			<span class="post-info"><?= get_the_date('j.n.Y');  wd_sattelite_theme_posted_by();?></span>
 			<?php
 				$raw = get_the_content();
 				$filtered_content = strip_tags(preg_replace('#<div[^>]*id="toc"[^>]*>.*?</div>#is', '', $raw));
 				$excerpt = trim(mb_substr($filtered_content, 0, 250)); ?>
-				<p class="post-excerpt"><?= $excerpt;?>... <a href="<?php the_permalink();?>">Read more</a></p>
+				<p class="post-excerpt"><?= $excerpt;?>... <a href="<?php the_permalink();?>"><?= pll_e('Read more');?></a></p>
 		</div><!-- .post-content -->
 	</article>
 <?php elseif($archive_layout === 'cards') : ?>
@@ -38,8 +39,9 @@ if($archive_layout === 'fullwidth') : ?>
 			$excerpt = wp_trim_words(get_the_excerpt(), 16, '...');
 			?>
 			<h3><a href="<?php the_permalink() ?>"><?= get_the_title(); ?></a></h3>
+			<span class="publication-date"> <?= pll_e('on');?> <?= get_the_date('j.n.Y');?></span>
 			<p><?= $excerpt ?></p>
-			<a href="<?php the_permalink() ?>" class="read-more">Read more</a>
+			<a href="<?php the_permalink() ?>" class="read-more"><?= pll_e('Read more');?></a>
 		</div>
 	</article>
 <?php endif; ?>

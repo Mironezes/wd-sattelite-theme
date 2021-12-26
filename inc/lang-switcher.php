@@ -21,7 +21,8 @@
 							if ($is_current)
 							{ ?>
 									<li class="pll-current-lang">
-										<img width="30" height="30" src="<?= $lang['flag']; ?>" alt="<?=strtoupper($lang['slug']); ?>">
+										<img width="30" height="30" src="<?=strtoupper($lang['flag']); ?>" alt="<?=strtoupper($lang['slug']); ?>">
+										<!-- <span><?=strtoupper($lang['slug']); ?></span> -->
 									</li>
 									<?php
 							}
@@ -29,7 +30,8 @@
 							{ ?>
 									<li>
 										<a href="<?=$lang['url']; ?>">
-											<img src="<?= $lang['flag']; ?>" alt="<?=strtoupper($lang['slug']); ?>">
+											<img width="30" height="30" src="<?=$lang['flag']; ?>" alt="<?=strtoupper($lang['slug']); ?>">
+											<!-- <span><?=strtoupper($lang['slug']); ?></span> -->
 										</a>
 									</li>
 								<?php

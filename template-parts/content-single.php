@@ -47,9 +47,9 @@
       >
     </div>
     <div class="publication-info">
-		  <span class="author-name">Published by <?= $author_name ?> </span>
-      <span class="publication-date"> on <?= get_the_date();?></span>
-      <a class="all-author-posts-link" href="<?= $author_slug;?>">See all author posts</a>
+		  <span class="author-name"><?= pll_e('Published by');?> <?= $author_name ?> </span>
+      <span class="publication-date"> <?= pll_e('on');?> <?= get_the_date();?></span>
+      <a class="all-author-posts-link" href="<?= $author_slug;?>"><?= pll_e('See all author posts');?></a>
     </div>
 	</section>
 

@@ -36,7 +36,7 @@
 
 <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
 <?php 
-		
+include_once(__DIR__ . '/inc/adserver.php');
 wp_footer(); ?>
 
 </body>

@@ -22,6 +22,7 @@
 
 <body <?php body_class($body_classes); ?>>
 <?php wp_body_open(); ?>
+
 <div id="page" class="site">
 	<header class="site-header">			
 			<div class="header-logo">
@@ -34,9 +35,28 @@
 						<?php endif;?>
 					<?php else: 
 							if(get_field('logo_type', 'option') === 'text') : ?>
-								<a href="<?= site_url('/');?>"><?= get_field('logo_text','option'); ?></a>
+								<?php 
+									$home_url = site_url('/');
+									if(function_exists('pll_the_languages')) {
+										$current_lang = pll_current_language('slug');
+										$default_lang = pll_default_language('slug');
+										if($current_lang == $default_lang) {
+											$home_url = '/';
+										}
+										else {
+											$site_domain = $_SERVER['SERVER_NAME'];
+											if(strpos($site_domain, $current_lang) !== false) {	
+												$home_url = '/';
+											}
+											else {
+												$home_url = '/' . $current_lang . '/';
+											}
+										}
+									}
+								?>
+								<a href="<?= $home_url;?>"><?= get_field('logo_text','option'); ?></a>
 							<?php elseif(get_field('logo_type', 'option') === 'image') : ?>
-								<a href="<?= site_url('/');?>"><img width="400" height="40" src="<?= get_field('logo_image', 'option');?>" alt="logo"></a>
+								<a href="<?= $home_url;?>"><img width="400" height="40" src="<?= get_field('logo_image', 'option');?>" alt="logo"></a>
 							<?php endif;?>
 						<?php endif; ?>
 					</div>
@@ -46,14 +66,8 @@
 				<div class="container">
 					<nav id="header-navigation" class="navigation">
 						<div id="mobile-menu-toggler">
-							<span id="mobile-menu-open">
-								<?= pll_e('Menu'); ?>
-								<img src="<?= get_template_directory_uri() ;?>/assets/burger-icon--white.svg" width="27" height="21" alt="icon">
-							</span>
-							<span id="mobile-menu-close">
-								<?= pll_e('Close'); ?>
-								<img src="<?= get_template_directory_uri() ;?>/assets/close-icon--white.svg" width="21" height="21" alt="icon">
-							</span>
+							<span id="mobile-menu-open"><?= pll_e('Menu'); ?> <img src="<?= get_template_directory_uri() ;?>/assets/burger-icon--white.svg" width="27" height="21" alt="icon"></span>
+							<span id="mobile-menu-close"><?= pll_e('Close'); ?> <img src="<?= get_template_directory_uri() ;?>/assets/close-icon--white.svg" width="21" height="21" alt="icon"></span>
 						</div>
 						<?php
 						wp_nav_menu(
