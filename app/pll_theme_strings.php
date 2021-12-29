@@ -25,7 +25,9 @@ if(function_exists('pll_register_string')) {
 
     pll_register_string('wdst-search-results-for', 'Search Results for', 'WD Theme'); 
     
-
+    pll_register_string('wdst-post-comment', 'Post Comment', 'WD Theme'); 
+    pll_register_string('wdst-leave-reply', 'Leave a Reply', 'WD Theme'); 
+    pll_register_string('wdst-comment', 'Comment', 'WD Theme'); 
   }
   add_action('init', 'wdst_pll_translation_strings');
 }

@@ -34,13 +34,15 @@ if( is_author() ) {
 
 				<div class="site-author-info">
 					<div class="site-author-info-image">
-						<?php $author_img = get_field('general_author_image', 'option');?>
-						<img 
-							src="<?= $author_img['url'];?>" 
-							width="<?= $author_img['width'];?>" 
-							height="<?= $author_img['height'];?>"
-							alt="<?= $author_img['alt'];?>"
-						>
+						<?php $author_img = get_field('general_author_image', 'option');
+						if(!empty($author_img)) : ?>
+							<img 
+								src="<?= $author_img['url'];?>" 
+								width="<?= $author_img['width'];?>" 
+								height="<?= $author_img['height'];?>"
+								alt="<?= $author_img['alt'];?>"
+							>
+						<?php endif;?>
 					</div>
 					<div class="site-author-info-desc">
 						<h2><?= $author_name;?></h2>

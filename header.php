@@ -23,6 +23,26 @@
 <body <?php body_class($body_classes); ?>>
 <?php wp_body_open(); ?>
 
+<?php 
+	$home_url = site_url('/');
+	if(function_exists('pll_the_languages')) {
+		$current_lang = pll_current_language('slug');
+		$default_lang = pll_default_language('slug');
+		if($current_lang == $default_lang) {
+			$home_url = '/';
+		}
+		else {
+			$site_domain = $_SERVER['SERVER_NAME'];
+			if(strpos($site_domain, $current_lang) !== false) {	
+				$home_url = '/';
+			}
+			else {
+				$home_url = '/' . $current_lang . '/';
+			}
+		}
+	}
+?>
+
 <div id="page" class="site">
 	<header class="site-header">			
 			<div class="header-logo">
@@ -31,32 +51,13 @@
 						if(get_field('logo_type', 'option') === 'text') : ?>
 							<span><?= get_field('logo_text','option'); ?></span>
 						<?php elseif(get_field('logo_type', 'option') === 'image') : ?>
-								<img width="400" height="40" src="<?= get_field('logo_image');?>" alt="logo">
+								<img width="300" height="40" src="<?= get_field('logo_image', 'option');?>" alt="logo">
 						<?php endif;?>
 					<?php else: 
 							if(get_field('logo_type', 'option') === 'text') : ?>
-								<?php 
-									$home_url = site_url('/');
-									if(function_exists('pll_the_languages')) {
-										$current_lang = pll_current_language('slug');
-										$default_lang = pll_default_language('slug');
-										if($current_lang == $default_lang) {
-											$home_url = '/';
-										}
-										else {
-											$site_domain = $_SERVER['SERVER_NAME'];
-											if(strpos($site_domain, $current_lang) !== false) {	
-												$home_url = '/';
-											}
-											else {
-												$home_url = '/' . $current_lang . '/';
-											}
-										}
-									}
-								?>
 								<a href="<?= $home_url;?>"><?= get_field('logo_text','option'); ?></a>
 							<?php elseif(get_field('logo_type', 'option') === 'image') : ?>
-								<a href="<?= $home_url;?>"><img width="400" height="40" src="<?= get_field('logo_image', 'option');?>" alt="logo"></a>
+								<a href="<?= $home_url;?>"><img width="300" height="40" src="<?= get_field('logo_image', 'option');?>" alt="logo"></a>
 							<?php endif;?>
 						<?php endif; ?>
 					</div>

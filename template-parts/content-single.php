@@ -38,13 +38,15 @@
   ?>
     <div class="author-image">
 
-    <?php $author_img = get_field('general_author_image_preview', 'option');?>
-			<img 
-				src="<?= $author_img['url'];?>" 
-				width="<?= $author_img['width'];?>" 
-				height="<?= $author_img['height'];?>"
-				alt="<?= $author_img['alt'];?>"
-      >
+    <?php $author_img = get_field('general_author_image_preview', 'option');
+      if(!empty($author_img)): ?>
+        <img 
+          src="<?= $author_img['url'];?>" 
+          width="<?= $author_img['width'];?>" 
+          height="<?= $author_img['height'];?>"
+          alt="<?= $author_img['alt'];?>"
+        >
+      <?php endif; ?>
     </div>
     <div class="publication-info">
 		  <span class="author-name"><?= pll_e('Published by');?> <?= $author_name ?> </span>
