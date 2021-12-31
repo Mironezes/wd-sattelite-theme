@@ -35,11 +35,10 @@
                 <div class="recent-post-tile-content">
                   <?php
                     $title = wp_trim_words(get_the_title(), 8, '...'); 
-                    $excerpt = wp_trim_words(get_the_excerpt(), 16, '...');
                   ?>
-                  <h3><a href="<?php the_permalink() ?>"><?= $title; ?></a></h3>
-                  <p><?= $excerpt ?></p>
-                  <a href="<?php the_permalink() ?>" class="read-more"><?= pll_e('Read more');?></a>
+                  <h3><a href="<?php the_permalink(); ?>"><?= $title; ?></a></h3>
+                  <p><?= wd_sattelite_theme_excerpt(); ?></p>
+                  <a href="<?php the_permalink(); ?>" class="read-more"><?= pll_e('Read more');?></a>
                 </div>
               </div>
               <?php 

@@ -57,20 +57,12 @@ if ( ! function_exists( 'wd_sattelite_theme_post_thumbnail' ) ) :
 	 * element when on single views.
 	 */
 	function wd_sattelite_theme_post_thumbnail() {
-		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+		if ( post_password_required() || is_attachment() ) {
 			return;
 		}
-
-		if ( is_singular() ) :
-			?>
-
-			<div class="post-thumbnail">
-				<?php the_post_thumbnail('medium'); ?>
-			</div><!-- .post-thumbnail -->
-
-		<?php else : ?>
-
-			<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+		
+		if( has_post_thumbnail() ) : ?>
+			<a href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 				<?php
 					the_post_thumbnail(
 						'medium',
@@ -84,9 +76,14 @@ if ( ! function_exists( 'wd_sattelite_theme_post_thumbnail' ) ) :
 					);
 				?>
 			</a>
-
-			<?php
-		endif; // End is_singular().
+	<?php
+		else :  
+	?>
+		<a href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+			<img width="215" height="150" src="<?= get_template_directory_uri();?>/assets/default-preview.jpg" alt="default image">
+		</a>
+	<?php 
+		endif;
 	}
 endif;
 

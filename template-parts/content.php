@@ -12,22 +12,24 @@
 <?php 
 
 $archive_layout = get_field('archive_blog_posts_layout', 'option');
-global $post;
+$show_categories_list = get_field('homepage_blog_categories_list', 'option');
+$show_categories_list = !empty($show_categories_list) ? $show_categories_list[0] : 0;
 
-if($archive_layout === 'fullwidth') : ?>
+if( (is_home() && !$show_categories_list) || (is_archive() && $archive_layout === 'fullwidth') ) : ?>
+
 	<article id="post-<?php the_ID(); ?>" class="archive-post-tile">
-		<?php wd_sattelite_theme_post_thumbnail(); ?>
+		<div class="post-thumbnail">
+			<?= wd_sattelite_theme_post_thumbnail(); ?>
+		</div>
 		<div class="post-content">
 			<?php the_title( '<h2 class="post-title"><a href="' . esc_url( get_permalink() ) . '">', '</a></h2>' );?>
 			<span class="post-info"><?= get_the_date('j.n.Y');  wd_sattelite_theme_posted_by();?></span>
-			<?php
-				$raw = get_the_content();
-				$filtered_content = strip_tags(preg_replace('#<div[^>]*id="toc"[^>]*>.*?</div>#is', '', $raw));
-				$excerpt = trim(mb_substr($filtered_content, 0, 250)); ?>
-				<p class="post-excerpt"><?= $excerpt;?>... <a href="<?php the_permalink();?>"><?= pll_e('Read more');?></a></p>
-		</div><!-- .post-content -->
-	</article>
-<?php elseif($archive_layout === 'cards') : ?>
+				<p class="post-excerpt"><?= wd_sattelite_theme_excerpt();?> <a href="<?php the_permalink();?>"><?= pll_e('Read more');?></a></p>
+		</div>
+	</article> <!-- .archive-post-tile -->
+
+<?php elseif( (is_home() && !$show_categories_list) || (is_archive() && $archive_layout === 'cards') ) : ?>
+
 	<article id="post-<?php the_ID(); ?>" class="recent-post-tile">
 		<div class="recentpost-tile-image">
 			<a href="<?php the_permalink() ?>">
@@ -35,13 +37,11 @@ if($archive_layout === 'fullwidth') : ?>
 			</a>
 		</div>
 		<div class="recent-post-tile-content">
-			<?php
-			$excerpt = wp_trim_words(get_the_excerpt(), 16, '...');
-			?>
 			<h3><a href="<?php the_permalink() ?>"><?= get_the_title(); ?></a></h3>
 			<span class="publication-date"> <?= pll_e('on');?> <?= get_the_date('j.n.Y');?></span>
-			<p><?= $excerpt ?></p>
+			<p><?= wd_sattelite_theme_excerpt();?></p>
 			<a href="<?php the_permalink() ?>" class="read-more"><?= pll_e('Read more');?></a>
 		</div>
-	</article>
+	</article> <!-- .recent-post-tile -->
+
 <?php endif; ?>
