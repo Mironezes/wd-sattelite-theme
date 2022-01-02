@@ -25,9 +25,9 @@ if ( ! function_exists( 'wd_sattelite_theme_setup' ) ) :
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 * If you're building a theme based on WP Theme, use a find and replace
-		 * to change 'wds-theme' to the name of your theme in all the template files.
+		 * to change 'wdst' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'wds-theme', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'wdst', get_template_directory() . '/languages' );
 
 		/*
 		 * Let WordPress manage the document title.
@@ -55,8 +55,8 @@ if ( ! function_exists( 'wd_sattelite_theme_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'header_nav' => esc_html__( 'Header', 'wds-theme' ),
-				'footer_nav' => esc_html__( 'Footer', 'wds-theme' ),
+				'header_nav' => esc_html__( 'Header', 'wdst' ),
+				'footer_nav' => esc_html__( 'Footer', 'wdst' ),
 			)
 		);
 
@@ -133,9 +133,9 @@ add_action( 'after_setup_theme', 'wd_sattelite_theme_content_width', 0 );
 function wd_sattelite_theme_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'wds-theme' ),
+			'name'          => esc_html__( 'Sidebar', 'wdst' ),
 			'id'            => 'sidebar',
-			'description'   => esc_html__( 'Add widgets here.', 'wds-theme' ),
+			'description'   => esc_html__( 'Add widgets here.', 'wdst' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h3 class="widget-title">',
@@ -149,8 +149,8 @@ add_action( 'widgets_init', 'wd_sattelite_theme_widgets_init' );
  * Enqueue scripts and styles.
  */
 function wd_sattelite_theme_scripts() {
-	wp_enqueue_style( 'wds-theme-style', get_stylesheet_uri(), array(), wp_rand() );
-	wp_style_add_data( 'wds-theme-style', 'rtl', 'replace' );
+	wp_enqueue_style( 'wdst-style', get_stylesheet_uri(), array(), wp_rand() );
+	wp_style_add_data( 'wdst-style', 'rtl', 'replace' );
 
 	wp_enqueue_script('main-bundle', get_template_directory_uri() . '/js/main.js', array(), wp_rand(), true);
 
@@ -182,25 +182,6 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 
-/**
- * Register ACF Options Page.
- *
- * @link https://www.advancedcustomfields.com/resources/options-page/
- */
-add_filter('acf/settings/remove_wp_meta_box', '__return_false');
-if( function_exists('acf_add_options_page') ) {
-	
-	acf_add_options_page(array(
-		'page_title' 	=> 'Theme General Settings',
-		'menu_title'	=> 'Theme Settings',
-		'menu_slug' 	=> 'wdst-general-settings',
-		'capability'	=> 'edit_posts',
-		'icon_url' => 'dashicons-edit-large',
-		'redirect'		=> false
-	));
-	
-	
-}
 
 /**
  * Popualar Posts Widget
@@ -275,4 +256,9 @@ function plugin_scripts_dependencies() {
 /**
  * Theme translations with Polylang strings
  */
-require_once(__DIR__ . '/app/pll_theme_strings.php');
+require_once(__DIR__ . '/app/pll-theme-strings.php');
+
+/**
+ * Theme settings panel
+ */
+require_once(__DIR__ . '/app/wdst-theme-settings.php');

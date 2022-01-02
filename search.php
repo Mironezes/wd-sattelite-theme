@@ -15,7 +15,7 @@ get_header();
 		<div class="container">
 			<section class="site-content-main">
 					<div class="archive-heading">
-						<h1><?php printf( esc_html__( pll_e('Search Results for') . ': %s', 'wds-theme' ), '<span>' . get_search_query() . '</span>' );?></h1>
+						<h1><?php printf( esc_html__( pll_e('Search Results for') . ': %s', 'wdst' ), '<span>' . get_search_query() . '</span>' );?></h1>
 					</div>
 					<div class="archive-posts">
 						<?php if ( have_posts() ) :

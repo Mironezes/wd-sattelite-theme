@@ -34,9 +34,9 @@ if(function_exists('pll_register_string')) {
 // If there`s no Polylang on site then use fallback functions
 else {
   function pll_e($str) {
-    return esc_html_e($str, 'wds-theme');
+    return esc_html_e($str, 'wdst');
   }
   function pll__($str) {
-    return esc_html($str, 'wds-theme');
+    return esc_html($str, 'wdst');
   }
 }
