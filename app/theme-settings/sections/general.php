@@ -26,7 +26,7 @@
                   foreach($polylang_lang_list as $lang) : ?>
                   <div id="welcome-screen-title__text" class="wdst-setting-item">
                       <label>
-                        <span>Heading (H1) - <?= $lang->slug; ?></span>
+                        <span>Homepage Heading (H1) - <?= strtoupper($lang->slug); ?></span>
                         <?php 
                           wdst_text_handler_html([
                             'class' => 'long',
@@ -41,7 +41,7 @@
 
               <div id="welcome-screen-title__text" class="wdst-setting-item">
                 <label>
-                  <span>Heading (H1)</span>
+                  <span>Homepage Heading (H1)</span>
                   <?php 
                     wdst_text_handler_html(['class' => 'long', 'field_name' => 'wdst_welcome_screen_title_text']); 
                     if( get_option('wdst_welcome_screen_title_text') == '' ) update_option( 'wdst_welcome_screen_title_text', '' );        

@@ -7,25 +7,40 @@
   </div>
   <div class="wdst-row hidden">
     <div class="wdst-section-content">
-      <div id="gtm-identifier" class="wdst-setting-item">
-          <label>
-            <span title="e.g. GTM-WT1234">GTM Identifier for lazyload <sup>?</sup></span>
-            <?php 
-              wdst_text_handler_html(['field_name' => 'wdst_gtm_id']); 
-              if( get_option('wdst_gtm_id') == '' ) update_option( 'wdst_gtm_id', '' );               
-            ?>    
-          </label>
-      </div> 
-      
-      <div id="wdst-yoast-posts-exclude" class="wdst-setting-item">
-          <label>
-            <span title="By category`s id, coma-separated">Exclude posts of categories from Yoast Sitemap <sup>?</sup></span>
-            <?php 
-              wdst_text_handler_html(['field_name' => 'wdst_yoast_posts_exclude']); 
-              if( get_option('wdst_yoast_posts_exclude') == '' ) update_option( 'wdst_yoast_posts_exclude', '' );               
-            ?>    
-          </label>
-      </div> 
+      <div id="dmca-settings" class="wdst-section-group">
+        <strong class="wdst-section-group__title">DMCA Settings</strong>
+        <div id="wdst-dmca-badge-image" class="wdst-setting-item">
+            <label>
+              <span>Badge Image</span>
+              <?php 
+                wdst_text_handler_html(['class' => 'long', 'field_name' => 'wdst_dmca_badge_image']); 
+                if( get_option('wdst_dmca_badge_image') == '' ) update_option( 'wdst_dmca_badge_image', '' );        
+              ?>  
+            </label>
+        </div>
+        <div id="wdst-dmca-badge-url" class="wdst-setting-item">
+            <label>
+              <span>URL</span>
+              <?php 
+                wdst_text_handler_html(['class' => 'long', 'field_name' => 'wdst_dmca_badge_url']); 
+                if( get_option('wdst_dmca_badge_url') == '' ) update_option( 'wdst_dmca_badge_url', '' );        
+              ?>  
+            </label>
+        </div>
+      </div>
+        
+      <div id="dmca-settings" class="wdst-section-group">
+        <strong class="wdst-section-group__title">Other</strong>
 
+        <div id="wdst-copyright-text" class="wdst-setting-item">
+          <label>
+            <span>Copyright text</span>
+            <?php 
+              wdst_text_handler_html(['class' => 'long', 'field_name' => 'wdst_copyright']); 
+              if( get_option('wdst_copyright') == '' ) update_option( 'wdst_copyright', '' );        
+            ?>  
+          </label>
+        </div>
+      </div>
     </div>
 </section>

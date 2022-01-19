@@ -90,10 +90,10 @@ html.fixed::before {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-#wdst-settings-page .wdst-section-group strong {
+#wdst-settings-page .wdst-section-group > strong {
   display: block;
   margin-bottom: 15px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
 }
 @media screen and (max-width: 1200px) {
@@ -303,7 +303,6 @@ div.disabled:before {
   #wdst-settings-page .wdst-section-header h2,
   #wdst-settings-page .wdst-section-header h3 {
     max-width: 75%;
-    font-size: 1rem;
   } 
 }
 
@@ -315,7 +314,16 @@ div.disabled:before {
   display: flex;
   align-items: center;
 }
+.wdst-setting-item:last-of-type {
+  margin-bottom: 0;
+}
+.wdst-setting-item-desc {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
 .wdst-setting-item label {
+  flex-wrap: wrap;
   width: fit-content;
   width: -moz-fit-content;
   padding: 15px;
@@ -330,7 +338,19 @@ div.disabled:before {
   text-align: left;
   color: #222;
 }
-#wdst-fix-empty-content{
+.wdst-setting-item label span.checkbox-label {
+  width: fit-content;
+}
+.wdst-setting-item label .wdst-setting-item-desc span {
+  font-size: inherit;
+  font-weight: normal;
+}
+.wdst-setting-item label .wdst-setting-item-desc strong {
+  display: block;
+  margin-bottom: 2.5px;
+  font-size: 14px;
+}
+#wdst-fix-empty-content {
   margin-bottom: 35px;
 }
 #wdst-fix-empty-content__choose {
@@ -342,9 +362,16 @@ div.disabled:before {
   border: 1px solid #cc2020;
 }
 @media screen and (max-width: 550px) {
+  .wdst-setting-item label .wdst-setting-item-desc strong {
+    font-size: 16px;
+  }
+  .wdst-setting-item label .wdst-setting-item-desc span {
+    font-size: 14px;
+  }
   .wdst-setting-item label span, 
   .wdst-setting-item > span {
     width: fit-content;
+    margin-bottom: 5px;
   }
   #wdst-snippets-settings label span {
     width: 200px;
@@ -385,6 +412,11 @@ div.disabled:before {
   top:1.5px;
   width:unset;
 }
+@media screen and (max-width: 550px) {
+  #wdst-settings-page input.long {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 1200px) {
   input[type="text"],
   input[type="date"],
@@ -405,6 +437,11 @@ div.disabled:before {
 #wdst-settings-page select {
   position: relative;
   width: 100px;
+}
+@media screen and (max-width: 550px) {
+  #wdst-settings-page select {
+    width: 100%;
+  }
 }
 
 

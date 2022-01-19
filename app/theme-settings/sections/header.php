@@ -23,6 +23,32 @@
               ?>    
             </label>
         </div>
+
+        <div id="wdst-header-logo-type-text" class="wdss-setting-group hidden">   
+          <div id="wdst-header-logo-text" class="wdst-setting-item">
+              <label>
+                <span>Logo Text</span>
+                <?php 
+                  wdst_text_handler_html(['class' => 'long', 'field_name' => 'wdst_header_logo_text']); 
+                  if( get_option('wdst_header_logo_text') == '' ) update_option( 'wdst_header_logo_text', '' );        
+                ?>    
+              </label>
+          </div>            
+        </div>
+
+        <div id="wdst-header-logo-type-image" class="wdss-setting-group hidden">   
+          <div id="wdst-header-logo-image" class="wdst-setting-item">
+              <label>
+                <span>Logo Image</span>
+                <?php 
+                  wdst_image_to_url_handler_html(['field_name' => 'wdst_header_logo_image', 'class' => 'long']); 
+                  if( get_option('wdst_header_logo_image') == '' ) update_option( 'wdst_header_logo_image', '' );        
+                ?>  
+                <button type="button" id="wdst-author-preview-image__choose" class="wdst-button choose">Choose</button>
+                <button type="button" class="wdst-button reset"><i class="trash"></i></button>       
+              </label>
+          </div>            
+        </div>
       </div>
     </div>
 </section>

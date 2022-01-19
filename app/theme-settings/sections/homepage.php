@@ -7,25 +7,34 @@
   </div>
   <div class="wdst-row hidden">
     <div class="wdst-section-content">
-      <div id="gtm-identifier" class="wdst-setting-item">
-          <label>
-            <span title="e.g. GTM-WT1234">GTM Identifier for lazyload <sup>?</sup></span>
-            <?php 
-              wdst_text_handler_html(['field_name' => 'wdst_gtm_id']); 
-              if( get_option('wdst_gtm_id') == '' ) update_option( 'wdst_gtm_id', '' );               
-            ?>    
-          </label>
-      </div> 
-      
-      <div id="wdst-yoast-posts-exclude" class="wdst-setting-item">
-          <label>
-            <span title="By category`s id, coma-separated">Exclude posts of categories from Yoast Sitemap <sup>?</sup></span>
-            <?php 
-              wdst_text_handler_html(['field_name' => 'wdst_yoast_posts_exclude']); 
-              if( get_option('wdst_yoast_posts_exclude') == '' ) update_option( 'wdst_yoast_posts_exclude', '' );               
-            ?>    
-          </label>
-      </div> 
+            <?php if(function_exists('pll_languages_list')) : ?>
+              <?php $polylang_lang_list = pll_languages_list(['fields' => []]);
+                  foreach($polylang_lang_list as $lang) : ?>
+                  <div id="homepage-heading" class="wdst-setting-item">
+                      <label>
+                        <span>Heading (H1) - <?= strtoupper($lang->slug); ?></span>
+                        <?php 
+                          wdst_text_handler_html([
+                            'class' => 'long',
+                            'field_name' => 'wdst_homepage_heading_' . $lang->slug . '',
+                          ]);        
+                          if( get_option('wdst_homepage_heading_' . $lang->slug . '') == '' ) update_option( 'wdst_homepage_heading_' . $lang->slug . '', '' );    
+                        ?>
+                      </label>
+                    </div>
+                  <?php endforeach;  ?>
+            <?php else: ?>
 
-    </div>
+              <div id="homepage-heading" class="wdst-setting-item">
+                <label>
+                  <span>Heading (H1)</span>
+                  <?php 
+                    wdst_text_handler_html(['class' => 'long', 'field_name' => 'wdst_homepage_heading']); 
+                    if( get_option('wdst_homepage_heading') == '' ) update_option( 'wdst_homepage_heading', '' );        
+                  ?>  
+               </label>
+             </div>
+            <?php endif; ?>
+        </div>
+      </div>    
 </section>
