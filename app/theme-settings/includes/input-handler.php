@@ -6,6 +6,7 @@
   function wdst_text_handler_html($args) { ?>
     <input type="text" 
       <?php if(isset($args['id'])) : ?> id="<?= $args['id']; ?>" <?php endif ?>
+      <?php if(isset($args['class'])) : ?> class="<?= $args['class']; ?>" <?php endif ?>
       name="<?= $args['field_name']; ?>" 
       value="<?= esc_attr(get_option($args['field_name']));?>" >  
   <? }
@@ -35,6 +36,7 @@
   ?>
     <input type="text" 
       <?php if(isset($args['id'])) : ?> id="<?= $args['id']; ?>" <?php endif ?>
+      <?php if(isset($args['class'])) : ?> class="<?= $args['class']; ?>" <?php endif ?>
       name="<?= $args['field_name']; ?>" 
       value="<?= $attachment_url; ?>" 
       >  
