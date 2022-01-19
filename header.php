@@ -66,10 +66,6 @@
 			<div class="header-navigation-n-lang">
 				<div class="container">
 					<nav id="header-navigation" class="navigation">
-						<div id="mobile-menu-toggler">
-							<span id="mobile-menu-open"><?= pll_e('Menu'); ?> <img src="<?= get_template_directory_uri() ;?>/assets/burger-icon--white.svg" width="27" height="21" alt="icon"></span>
-							<span id="mobile-menu-close"><?= pll_e('Close'); ?> <img src="<?= get_template_directory_uri() ;?>/assets/close-icon--white.svg" width="21" height="21" alt="icon"></span>
-						</div>
 						<?php
 						wp_nav_menu(
 							array(
@@ -85,6 +81,11 @@
 	</header><!-- header -->
 
 	<nav id="mobile-navigation" class="navigation">
+		<input type="checkbox" id="mobile-menu-checkbox" value="" name="mobile-menu-checkbox">
+		<div id="mobile-menu-toggler">
+				<span id="mobile-menu-open"><?= pll_e('Menu'); ?> <img src="<?= get_template_directory_uri() ;?>/assets/burger-icon--white.svg" width="27" height="21" alt="icon"></span>
+				<span id="mobile-menu-close"><?= pll_e('Close'); ?> <img src="<?= get_template_directory_uri() ;?>/assets/close-icon--white.svg" width="21" height="21" alt="icon"></span>
+			</div>
 		<?php
 			wp_nav_menu(
 				array(

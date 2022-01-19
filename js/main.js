@@ -6,6 +6,8 @@ function Init() {
   const mobile_nav = document.querySelector('#mobile-navigation');
   const toc_list = Array.from(document.querySelectorAll('.toc_list a'));
 
+  const test = document.querySelector('#mobile-menu-toggler input');
+
   function fixedMobileMenu() {
     if(window.matchMedia("(max-width: 1240px)").matches) {
       if(window.pageYOffset > header.offsetTop) {
@@ -49,12 +51,6 @@ function Init() {
     });
   }
 
-  
-  function mobileNavigation() {
-    main_nav.classList.toggle('active');
-    mobile_nav.classList.toggle('active');
-  }
-  mobile_menu_toggler.addEventListener('click', mobileNavigation);
   
   function backToTop() {
     window.scrollTo({top: 0, behavior: 'smooth'});

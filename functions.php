@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define( '_S_VERSION', '0.6' );
 }
 
 if ( ! function_exists( 'wd_sattelite_theme_setup' ) ) :
@@ -258,7 +258,29 @@ function plugin_scripts_dependencies() {
  */
 require_once(__DIR__ . '/app/pll-theme-strings.php');
 
+
 /**
  * Theme settings panel
  */
-require_once(__DIR__ . '/app/wdst-theme-settings.php');
+require_once(__DIR__ . '/app/theme-settings/wdst-theme-settings.php');
+
+
+
+
+function nelio_max_image_size( $file ) {
+
+  $size = $file['size'];
+  $size = $size / 1024;
+  $type = $file['type'];
+  $is_image = strpos( $type, 'image/webp' ) !== false;
+  $limit = 250;
+  $limit_output = '250kb';
+
+  if ( $is_image && $size > $limit ) {
+    $file['error'] = 'Image files must be smaller than ' . $limit_output;
+  }//end if
+
+  return $file;
+
+}//end nelio_max_image_size()
+add_filter( 'wp_handle_upload_prefilter', 'nelio_max_image_size' );

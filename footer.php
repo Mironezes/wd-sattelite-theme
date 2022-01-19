@@ -34,6 +34,29 @@
 	</footer><!-- footer -->
 </div><!-- #page -->
 
+
+<?php
+	global $post;
+	$content = get_the_content($post);
+	$pattern = '/<h\d>(.*?)<\/h\d>/';
+
+	preg_match_all($pattern, $content, $results);
+	if(!empty($results)) {
+
+		if(mb_strpos($results[0][0], 'h2') == false) {
+			$h2 = preg_replace($pattern, '<h2>$1</h2>', $results[0][0]);
+			
+			$old_tag = preg_replace('/\//', '\/', $results[0][0]);
+			$old_tag = preg_replace('/\?/', '\?', $old_tag);
+			$content = preg_replace('/'.$old_tag . '/', $h2, $content);
+			
+			var_dump($content);
+		}	
+	}
+
+?>
+
+
 <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
 <?php 
 include_once(__DIR__ . '/inc/adserver.php');

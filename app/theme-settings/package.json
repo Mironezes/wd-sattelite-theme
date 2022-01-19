@@ -1,0 +1,22 @@
+{
+  "name": "wdst-theme-settings",
+  "version": "1.0.0",
+  "description": "Admin panel for WD Satellite Theme",
+  "main": "index.js",
+  "scripts": {
+    "watch": "webpack --mode=development --watch --config webpack-config.js",
+    "build": "webpack --mode=production --config webpack-config.js"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "satellites",
+    "wizardsdev"
+  ],
+  "author": "Alexey Suprun",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.66.0",
+    "webpack-cli": "^4.9.1"
+  }
+}
