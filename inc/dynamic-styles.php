@@ -1,14 +1,21 @@
 <?php 
 
-  $show_background_image = get_field('main_background_image_enabled', 'option');
+  $show_background_image = intval(get_option('wdst_top_bg_img', ''));
 
   if($show_background_image) {
-    $main_bg_image_desktop_webp = get_field('main_background_image_desktop_webp', 'option');
-    $main_bg_image_desktop_jpg = get_field('main_background_image_desktop_jpeg', 'option'); 
-    $main_bg_image_mobile_webp = get_field('main_background_image_mobile_webp', 'option'); 
-    $main_bg_image_mobile_jpg = get_field('main_background_image_mobile_jpeg', 'option');
-  
+    $desktop_webp_id = get_option('wdst_top_bg_img_lg_webp', '');
+    $main_bg_image_desktop_webp = wp_get_attachment_image_src($desktop_webp_id)[0];
+
+    $desktop_jpg_id = get_option('wdst_top_bg_img_lg_jpeg', ''); 
+    $main_bg_image_desktop_jpg = wp_get_attachment_image_src($desktop_jpg_id)[0];
+
+    $mobile_webp_id = get_option('wdst_top_bg_img_xs_webp', ''); 
+    $main_bg_image_mobile_webp = wp_get_attachment_image_src($mobile_webp_id)[0];
+
+    $mobile_jpg_id = get_option('wdst_top_bg_img_xs_jpeg', '');
+    $main_bg_image_mobile_jpg = wp_get_attachment_image_src($mobile_jpg_id)[0];
   }
+
 
   $body_classes = '';
   if(function_exists('pll_current_language')) {

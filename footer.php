@@ -25,8 +25,8 @@
 			</nav><!-- #footer-navigation -->
 			<div id="footer-others">
 				<div class="site-info">
-					<div class="dmca"><a href="<?= get_field('dmca_link', 'option');?>" title="Content Protection by DMCA.com" class="dmca-badge"><img class="lazy" src="<?= get_field('dmca_image_url', 'option');?>" alt="Content Protection by DMCA.com" width="100" height="20"></a></div>
-					<span class="copyright"><?= get_field('copyright', 'option');?></span>
+					<div class="dmca"><a href="<?= get_option('wdst_dmca_badge_url', '');?>" title="Content Protection by DMCA.com" class="dmca-badge"><img class="lazy" src="<?= get_option('wdst_dmca_badge_image', '');?>" alt="Content Protection by DMCA.com" width="100" height="20"></a></div>
+					<span class="copyright"><?= get_option('wdst_copyright', '');?></span>
 				</div>
 				<span id="site-back-to-top"><img src="<?= get_template_directory_uri();?>/assets/arrow-up-var3.svg" width="17" height="23" alt="back-to-top"></span>
 			</div>

@@ -38,15 +38,3 @@ function wd_sattelite_theme_pingback_header() {
 }
 add_action( 'wp_head', 'wd_sattelite_theme_pingback_header' );
 
-
-/**
- * Add a fallback for get_field() in case if there`s no ACF plugin on site 
- */
-function wd_sattelite_theme_acf_fallback() {
-	if(!class_exists('ACF')) {
-		function get_field() {
-			return null;
-		}
-	}
-}
-add_action('wp', 'wd_sattelite_theme_acf_fallback');

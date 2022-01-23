@@ -4,6 +4,7 @@
 
   $cat_args=array('orderby' => 'name','order' => 'ASC');
   $categories=get_categories($cat_args);
+  
 
   foreach($categories as $category) : 
 

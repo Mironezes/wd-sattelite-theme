@@ -24,6 +24,8 @@
 <?php wp_body_open(); ?>
 
 <?php 
+	$attach_id;
+	$logo_img;
 	$home_url = site_url('/');
 	if(function_exists('pll_the_languages')) {
 		$current_lang = pll_current_language('slug');
@@ -41,6 +43,12 @@
 			}
 		}
 	}
+
+	if(strpos(get_option('wdst_header_logo_type'), 'image')) {
+		$attach_id = get_option('wdst_author_preview_image', '');
+		$logo_data = wp_get_attachment_image_src($attach_id);
+		$logo_img = "<img src='$logo_data[0]' width='$logo_data[1]' height='$logo_data[2]' alt='Logo'>";
+	}
 ?>
 
 <div id="page" class="site">
@@ -48,16 +56,16 @@
 			<div class="header-logo">
 				<div class="container">
 					<?php if( is_home() ) : 
-						if(get_field('logo_type', 'option') === 'text') : ?>
-							<span><?= get_field('logo_text','option'); ?></span>
-						<?php elseif(get_field('logo_type', 'option') === 'image') : ?>
-								<img width="300" height="40" src="<?= get_field('logo_image', 'option');?>" alt="logo">
+						if(strpos(get_option('wdst_header_logo_type'), 'text')) : ?>
+							<span><?= get_option('wdst_header_logo_text'); ?></span>
+						<?php elseif(strpos(get_option('wdst_header_logo_type'), 'image')) : ?>
+							<?= $logo_img;?>
 						<?php endif;?>
 					<?php else: 
-							if(get_field('logo_type', 'option') === 'text') : ?>
-								<a href="<?= $home_url;?>"><?= get_field('logo_text','option'); ?></a>
-							<?php elseif(get_field('logo_type', 'option') === 'image') : ?>
-								<a href="<?= $home_url;?>"><img width="300" height="40" src="<?= get_field('logo_image', 'option');?>" alt="logo"></a>
+							if(strpos(get_option('wdst_header_logo_type'), 'text')) : ?>
+								<a href="<?= $home_url;?>"><?= get_option('wdst_header_logo_text'); ?></a>
+							<?php elseif(strpos(get_option('wdst_header_logo_type'), 'image')) : ?>
+								<a href="<?= $home_url;?>"><?= $logo_img;?></a>
 							<?php endif;?>
 						<?php endif; ?>
 					</div>

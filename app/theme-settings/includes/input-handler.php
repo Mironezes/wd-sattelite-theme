@@ -26,17 +26,16 @@
   <? }
 
   function wdst_image_to_url_handler_html($args) { 
-    $attachment_url = esc_attr(get_option($args['field_name'])) ?: '';
-    $attachment_id = attachment_url_to_postid(esc_attr(get_option($args['field_name'])));
+    $attachment_id = esc_attr(get_option($args['field_name']));
+    $attachment_url = wp_get_attachment_image_src($attachment_id);
   ?>
     <div class="wdst-image-chooser-preview" 
-         style="background-image: url('<?= $attachment_url; ?>');">
+         style="background-image: url('<?= $attachment_url[0]; ?>');">
     </div>
     <input type="text" 
-      <?php if(isset($attachment_id)) : ?> data-id="<?= $attachment_id;?>" <?php endif; ?>
       <?php if(isset($args['id'])) : ?> id="<?= $args['id']; ?>" <?php endif; ?>
       name="<?= $args['field_name']; ?>" 
-      <?php if(isset($attachment_url)) : ?> value="<?= $attachment_url; ?>" <?php endif; ?> 
+      <?php if(isset($attachment_id)) : ?> value="<?= $attachment_id; ?>" <?php endif; ?> 
     >  
   <?php }
 

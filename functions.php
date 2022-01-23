@@ -252,7 +252,6 @@ function plugin_scripts_dependencies() {
 	}
 }
 
-
 /**
  * Theme translations with Polylang strings
  */

@@ -9,7 +9,7 @@
 
 get_header();
 
-$show_background_image = get_field('main_background_image_enabled', 'option');
+$show_background_image = intval(get_option('wdst_top_bg_img', ''));
 ?>
 
 	<?php 

@@ -37,22 +37,28 @@ export default function mediaFileChooser(obj) {
         let index = 0;
   
           if(parent) {
-            selection.forEach(function(attachment) {
-              gallery_urls[index] = attachment.attributes['url'];
-              index++;
-            });
-
             if(obj.is_multiple == true) {
+
+              selection.forEach(function(attachment) {
+                gallery_urls[index] = attachment.attributes['id'];
+                index++;
+              });
+
               let urls = gallery_urls.join(",");
               if(target_input) {
                 target_input.value = urls;
               }
             }
             else {
+              selection.forEach(function(attachment) {
+                gallery_urls[index] = [attachment.attributes['url'], attachment.attributes['id']];
+                index++;
+              });
+
               if(target_input) {
                 let image_preview = parent.querySelector('.wdst-image-chooser-preview');
-                target_input.value = gallery_urls[0];
-                image_preview.style.backgroundImage = "url(" + gallery_urls[0] + ")";
+                target_input.value = gallery_urls[0][1];
+                image_preview.style.backgroundImage = "url(" + gallery_urls[0][0] + ")";
               }
             } 
           }
@@ -75,10 +81,9 @@ export default function mediaFileChooser(obj) {
           }
         }
         else {
-          if(ids_el.dataset.id) {
-            let id = ids_el.dataset.id;
-            let attachment = wp.media.attachment(id);
-             attachment.fetch();
+          if(ids_el.value) {
+            let attachment = wp.media.attachment(ids_el.value);
+            attachment.fetch();
             selection.add(attachment ? [attachment] : []);
           }
         }

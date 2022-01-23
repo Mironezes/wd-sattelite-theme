@@ -10,7 +10,7 @@
 ?>
 
 <?php 
-  $show_background_image = get_field('main_background_image_enabled', 'option');
+$show_background_image = intval(get_option('wdst_top_bg_img', ''));
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -38,13 +38,15 @@
   ?>
     <div class="author-image">
 
-    <?php $author_img = get_field('general_author_image_preview', 'option');
+    <?php 
+      $attach_id = get_option('wdst_author_preview_image', '');
+      $author_img = wp_get_attachment_image_src($attach_id);
       if(!empty($author_img)): ?>
         <img 
-          src="<?= $author_img['url'];?>" 
-          width="<?= $author_img['width'];?>" 
-          height="<?= $author_img['height'];?>"
-          alt="<?= $author_img['alt'];?>"
+          src="<?= $author_img[0];?>" 
+          width="<?= $author_img[1];?>" 
+          height="<?= $author_img[2];?>"
+          alt="author"
         >
       <?php endif; ?>
     </div>

@@ -9,10 +9,10 @@
     <div class="wdst-section-content">
 
       <div id="welcome-screen" class="wdst-section-group">
-        <strong class="wdst-section-group__title">Welcome Screen</strong>
+        <strong class="wdst-section-group__title">Top Screen</strong>
         <div id="wdst-welcome-screen" class="wdst-setting-item">
             <label>
-              <span>Use Welcome screen</span>
+              <span>Use Top Screen</span>
               <?php 
                 wdst_checkbox_handler_html(['field_name' => 'wdst_welcome_screen']); 
                 if( get_option('wdst_welcome_screen') == '' ) update_option( 'wdst_welcome_screen', '' );        

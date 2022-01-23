@@ -9,7 +9,7 @@
 
 get_header();
 
-$show_background_image = get_field('main_background_image_enabled', 'option');
+$show_background_image = intval(get_option('wdst_top_bg_img', ''));
 
 if( is_author() ) {
 	$author_name = get_the_author_meta('first_name') . ' ' . get_the_author_meta('last_name');
@@ -34,13 +34,16 @@ if( is_author() ) {
 
 				<div class="site-author-info">
 					<div class="site-author-info-image">
-						<?php $author_img = get_field('general_author_image', 'option');
-						if(!empty($author_img)) : ?>
+
+					<?php
+						$attach_id = get_option('wdst_author_preview_image', '');
+						$author_data = wp_get_attachment_image_src($attach_id);
+						if(!empty($author_data)) : ?>
 							<img 
-								src="<?= $author_img['url'];?>" 
-								width="<?= $author_img['width'];?>" 
-								height="<?= $author_img['height'];?>"
-								alt="<?= $author_img['alt'];?>"
+								src="<?= $author_data[0];?>" 
+								width="<?= $author_data[1];?>" 
+								height="<?= $author_data[2];?>"
+								alt="author"
 							>
 						<?php endif;?>
 					</div>

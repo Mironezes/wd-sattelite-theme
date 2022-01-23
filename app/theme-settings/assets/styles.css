@@ -110,6 +110,9 @@ html.fixed::before {
 #wdst-snippets-settings .wdst-setting-item {
   width: calc(33.33% - 25px);
 }
+#wdst-snippets-settings .wdst-setting-item.hidden {
+  display: none;
+}
 #wdst-settings-page .wdst-col-4 {
   display: flex;
   flex-direction: column;
@@ -361,6 +364,9 @@ div.disabled:before {
   background: transparent;
   border: 1px solid #cc2020;
 }
+.wdst-setting-item.image-chooser label {
+  cursor: unset;
+}
 @media screen and (max-width: 550px) {
   .wdst-setting-item label .wdst-setting-item-desc strong {
     font-size: 16px;
@@ -493,14 +499,13 @@ div.disabled:before {
     margin-bottom: 4px;
   }
   .wdst-setting-item.image-chooser .wdst-button.choose {
-    margin-left: auto;
-    margin-right: 12px !important;
+    right: 32px;
     border-radius: 4px;
   }
   .wdst-setting-item.image-chooser .wdst-button.reset {
     position: absolute;
-    bottom: 0;
-    right: 18px
+    bottom: calc(50% - 15px);
+    right: -20px;
   }
   #wdst-featured-images-group .wdst-setting-item.image-chooser .wdst-button.reset {
       bottom: unset;

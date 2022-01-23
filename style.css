@@ -286,7 +286,7 @@ nav#header-navigation ul li.current-menu-item a {
 	position: fixed;
 	width: 100%;
 	z-index: 2;
-	top: 55px;
+	top: 0;
 }
 #mobile-navigation ul {
 	margin-left: 0;
@@ -909,6 +909,9 @@ body.background-img.single .site-title h1 {
 	margin-right: 20px;
 }
 .single-post-author-block .author-image img {
+	position: relative;
+	width: 48px;
+	height: 48px;
 	border-radius: 0px;
 }
 .single-post-author-block .publication-info a {
