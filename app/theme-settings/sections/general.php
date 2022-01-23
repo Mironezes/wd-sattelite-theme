@@ -20,7 +20,7 @@
             </label>
         </div>
 
-        <div id="welcome-screen-title" class="wdss-setting-group hidden">   
+        <div id="welcome-screen-title" class="wdst-setting-group hidden">   
             <?php if(function_exists('pll_languages_list')) : ?>
               <?php $polylang_lang_list = pll_languages_list(['fields' => []]);
                   foreach($polylang_lang_list as $lang) : ?>
@@ -56,23 +56,21 @@
       
       <div id="author-settings" class="wdst-section-group">
         <strong class="wdst-section-group__title">Author</strong>
-        <div id="wdst-welcome-screen" class="wdst-setting-item">
+        <div id="wdst-author-image" class="wdst-setting-item image-chooser">
             <label>
-              <span>Author image</span>
+              <span>Author image <small>(140x140)</small></span>
               <?php 
-                wdst_image_to_url_handler_html(['field_name' => 'wdst_author_image', 'class' => 'long']); 
-                if( get_option('wdst_author_image') == '' ) update_option( 'wdst_author_image', '' );        
+                wdst_image_to_url_handler_html(['field_name' => 'wdst_author_image']);         
               ?>  
               <button type="button" id="wdst-author-image__choose" class="wdst-button choose">Choose</button>
               <button type="button" class="wdst-button reset"><i class="trash"></i></button>   
             </label>
         </div>
-        <div id="wdst-welcome-screen" class="wdst-setting-item">
+        <div id="wdst-author-preview-image" class="wdst-setting-item image-chooser">
             <label>
-              <span>Author preview image</span>
+              <span>Author preview image <small>(50x50)</small></span>
               <?php 
-                wdst_image_to_url_handler_html(['field_name' => 'wdst_author_preview_image', 'class' => 'long']); 
-                if( get_option('wdst_author_preview_image') == '' ) update_option( 'wdst_author_preview_image', '' );        
+                wdst_image_to_url_handler_html(['field_name' => 'wdst_author_preview_image']);      
               ?>  
                 <button type="button" id="wdst-author-preview-image__choose" class="wdst-button choose">Choose</button>
                 <button type="button" class="wdst-button reset"><i class="trash"></i></button>                 

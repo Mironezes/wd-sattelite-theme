@@ -3,7 +3,7 @@
 	export class Notification {
 
 		static closeNotification(target, type, context) {
-			let is_module_block = context ? context.includes('wdss-modal') : null; 
+			let is_module_block = context ? context.includes('wdst-modal') : null; 
 			let html = document.querySelector('html');
 			
 			if(target.closest('.notification')) {
@@ -47,10 +47,10 @@
 		
 				if (type === 'prompt') {
 					html.classList.add('fixed');
-					notification_template += `<div class="notification-content-inputs"><input required type="number" min="50" value="50"><button type="button" class="wdss-button">Enter</button></div>`;
+					notification_template += `<div class="notification-content-inputs"><input required type="number" min="50" value="50"><button type="button" class="wdst-button">Enter</button></div>`;
 				}
 				else if(type === 'confirm') {
-					notification_template += `<div class="notification-content-inputs"><button class="wdss-button confirm">Yes</button><button class="wdss-button cancel">No</button></div>`;
+					notification_template += `<div class="notification-content-inputs"><button class="wdst-button confirm">Yes</button><button class="wdst-button cancel">No</button></div>`;
 				}
 				notification_template += `</div>`;
 				document.body.insertAdjacentHTML('beforeend', notification_template);

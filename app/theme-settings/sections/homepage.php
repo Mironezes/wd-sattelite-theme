@@ -1,6 +1,6 @@
 <section id="homepage-settings" class="wdst-section">
   <div class="wdst-section-header">
-    <h2 class="section-toggler">Homepage</h2>
+    <h2 class="section-toggler">Homepage Listing</h2>
     <div class="wdst-section-header-togglers">
       <i class=" chevron-down section-toggler"></i>
     </div>

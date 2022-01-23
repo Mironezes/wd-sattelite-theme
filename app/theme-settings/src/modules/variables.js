@@ -1,86 +1,108 @@
   // Selectors for our functions
-  export const featuredImageSection = {
-    toggler: '#wdss-auto-featured-image-condition input',
-    target: '#wdss-featured-images-group'
+  export  const welcomeSection = {
+    toggler: '#wdst-welcome-screen input',
+    target: '#welcome-screen-title',
+    type: 'checkbox'
   };
-  
-  export  const polylangSection = {
-    toggler: '#wdss-polylang-meta-data-condition input',
-    target: '#wdss-polylang-meta-data-group'  
+
+  export  const logoSection = {
+    toggler: '#wdst-header-logo-type select',
+    type: 'select'
   };
+
+  export const mainBgSection = {
+    toggler: '#wdst-use-top-bg-img input',
+    target: '#wdst-top-bg-img',
+    type: 'checkbox'
+  }
   
-  export const featuredImagesListReset = {
-    button: '#wdss-featured-images-group button.reset',
-    target: '#wdss-featured-images-group input'
+  export const authorImageReset = {
+    button: '#wdst-author-image button.reset',
+    target: '#wdst-author-image input'
   };
-  
-  export const organizationLogoReset = {
-    button: '#wdss-jsonld-schema-logo button.reset',
-    target: '#wdss-jsonld-schema-logo input'
+
+  export const authorImagePreviewReset = {
+    button: '#wdst-author-preview-image button.reset',
+    target: '#wdst-author-preview-image input'
   };
-  
-  export const featuredImagesChooser = {
-    select: '.image-chooser.featured button.choose',
-    target: '.image-chooser.featured input',
-    is_multiple: true,
-    title: 'Select Featured Images',
-    types: ['image']
+
+  export const logoImageReset = {
+    button: '#wdst-header-logo-image button.reset',
+    target: '#wdst-header-logo-image input'
   };
-  
-  export const organizationLogoChooser = {
-    select: '.image-chooser.logo button.choose',
-    target: '.image-chooser.logo input',
+
+  export const authorImageChooser = {
+    select: '#wdst-author-image button.choose',
+    target: '#wdst-author-image input[type="text"]',
     is_multiple: false,
-    title: 'Select Organization Logo',
+    title: 'Select Author Image',
+    types: ['image']
+  };
+  
+  export const authorImagePreviewChooser = {
+    select: '#wdst-author-preview-image button.choose',
+    target: '#wdst-author-preview-image input[type="text"]',
+    is_multiple: false,
+    title: 'Select Author Preview Image',
+    types: ['image']
+  }  
+
+  export const logoImageChooser = {
+    select: '#wdst-header-logo-image button.choose',
+    target: '#wdst-header-logo-image input[type="text"]',
+    is_multiple: false,
+    title: 'Select Logo Image',
     types: ['image']
   }
-  
-  export const getOgranizationName = {
-    selector: '#wdss-generate-orgname',
-    input: '#wdss-jsonld-schema-orgname input',
-  }
-  
-  export const getSiteEmail = {
-    selector: '#wdss-generate-email',
-    input: '#wdss-jsonld-schema-email input',
-  }
-  
-  export const e410_Dictionary = {
-    root_el: '#custom-410s-list-settings',
-    action: 'e410_dictionary_update',
-    nonce: 'e410-dictionary-nonce',
-    name: 'e410_dictionary'
-  }
-  
-  export const excludedHostsDictionary = {
-    root_el: '#post-content-settings',
-    action: 'excluded_hosts_dictionary_update',
-    nonce: 'excluded-hosts-dictionary-nonce',
-    name: 'excluded_hosts_dictionary'
+
+  export const topBackgroundWebpLgChooser = {
+    select: '#wdst-top-bg-img-lg-webp button.choose',
+    target: '#wdst-top-bg-img-lg-webp input[type="text"]',
+    is_multiple: false,
+    title: 'Select Background Image for Desktop [WEBP]',
+    types: ['image/webp']
   }
 
-  export const removeBrokenFeatured = {
-    query_type: 'rest',
-    modal_el: '#exclude-posts-modal',
-    modal_title: 'Delete Broken Featured Images',
-    open_modal_btn: '#wdss-remove-broken-featured__choose',
-    fetch_action:  'fetch_broken_featured',
-    fetch_nonce_name: 'fetch_broken_featured_nonce',
-    fetch_nonce_value: wdst_localize.broken_featured_list_nonce,
-    post_action: 'remove_broken_featured',
-    post_nonce_name: 'remove_broken_featured_nonce',
-    post_nonce_value: wdst_localize.remove_broken_featured_nonce
+  export const topBackgroundWebpLgReset = {
+    button: '#wdst-top-bg-img-lg-webp button.reset',
+    target: '#wdst-top-bg-img-lg-webp input'
+  };
+
+  export const topBackgroundJpegLgChooser = {
+    select: '#wdst-top-bg-img-lg-jpeg button.choose',
+    target: '#wdst-top-bg-img-lg-jpeg input[type="text"]',
+    is_multiple: false,
+    title: 'Select Background Image for Desktop [JPEG]',
+    types: ['image/jpeg']
   }
 
-  export const fixEmptyPostsContent = {
-    query_type: 'sql',
-    modal_el: '#fix-validation-posts-modal',
-    modal_title: 'Fix Empty Posts Content',
-    open_modal_btn: '#wdss-fix-empty-content__choose',
-    fetch_action:  'fetch_all_posts',
-    fetch_nonce_name: 'empty_posts_list_nonce',
-    fetch_nonce_value: wdst_localize.empty_posts_list_nonce,
-    post_action: 'fix_posts_validation_errors',
-    post_nonce_name: 'fix-posts-validation-errors-nonce',
-    post_nonce_value: wdst_localize.fix_posts_validation_errors_nonce    
+  export const topBackgroundJpegLgReset = {
+    button: '#wdst-top-bg-img-lg-jpeg button.reset',
+    target: '#wdst-top-bg-img-lg-jpeg input'
+  };
+
+  export const topBackgroundWebpXsChooser = {
+    select: '#wdst-top-bg-img-xs-webp button.choose',
+    target: '#wdst-top-bg-img-xs-webp input[type="text"]',
+    is_multiple: false,
+    title: 'Select Background Image for Mobile [WEBP]',
+    types: ['image/webp']
   }
+
+  export const topBackgroundWebpXsReset = {
+    button: '#wdst-top-bg-img-xs-webp button.reset',
+    target: '#wdst-top-bg-img-xs-webp input'
+  };
+
+  export const topBackgroundJpegXsChooser = {
+    select: '#wdst-top-bg-img-xs-jpeg button.choose',
+    target: '#wdst-top-bg-img-xs-jpeg input[type="text"]',
+    is_multiple: false,
+    title: 'Select Background Image for Mobile [JPEG]',
+    types: ['image/jpeg']
+  }
+
+  export const topBackgroundJpegXsReset = {
+    button: '#wdst-top-bg-img-xs-jpeg button.reset',
+    target: '#wdst-top-bg-img-xs-jpeg input'
+  };

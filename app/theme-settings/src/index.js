@@ -1,10 +1,11 @@
-import {getSiteInfo, accordionToggler, checkboxToggler, sectionToggler, groupToggler, ajaxQuery, resetInputs, toggleAllOptions} from "./modules/helpers";
-import {featuredImageSection, polylangSection, featuredImagesListReset, organizationLogoReset, featuredImagesChooser, organizationLogoChooser, getOgranizationName, getSiteEmail, e410_Dictionary, excludedHostsDictionary, removeBrokenFeatured, fixEmptyPostsContent} from './modules/variables';
+import {accordionToggler, checkboxToggler, sectionToggler, groupToggler, ajaxQuery, resetImage} from "./modules/helpers";
+import {
+  welcomeSection, logoSection, mainBgSection,  logoImageChooser, logoImageReset, 
+  authorImageChooser, authorImageReset, authorImagePreviewChooser, authorImagePreviewReset,  
+  topBackgroundWebpLgChooser, topBackgroundWebpLgReset, topBackgroundJpegLgChooser, topBackgroundJpegLgReset, topBackgroundWebpXsChooser,
+  topBackgroundWebpXsReset, topBackgroundJpegXsChooser, topBackgroundJpegXsReset} from './modules/variables';
 
-import schemaSectionSettings from "./modules/schema-settings";
 import mediaFileChooser from "./modules/media-file-chooser";
-import getPostsModal from "./modules/posts-modal";
-import dictionaryHandler from "./modules/dictionary-handler";
 
 // Condition for calling our functions
 const pluginPage = document.querySelector('#wdst-settings-page');
@@ -13,31 +14,35 @@ function Init() {
   if(pluginPage) {
 
     sectionToggler();
-
-    groupToggler(featuredImageSection);
-
-    mediaFileChooser(featuredImagesChooser);
-
-    resetInputs(featuredImagesListReset);
-
-    getPostsModal(removeBrokenFeatured);
-    getPostsModal(fixEmptyPostsContent);
-    
-
-    if(wdst_localize.is_polylang_exists && wdst_localize.is_polylang_setup) {
-    }
-
-    dictionaryHandler(excludedHostsDictionary);
-    dictionaryHandler(e410_Dictionary);
-
-    mediaFileChooser(organizationLogoChooser);
-    resetInputs(organizationLogoReset);
-
-    schemaSectionSettings();
-
     checkboxToggler();
-    toggleAllOptions();
     accordionToggler();
+
+    groupToggler(welcomeSection);
+    groupToggler(logoSection);
+    groupToggler(mainBgSection);
+
+    mediaFileChooser(authorImageChooser);
+    resetImage(authorImageReset);
+
+    mediaFileChooser(authorImagePreviewChooser);
+    resetImage(authorImagePreviewReset);
+
+    mediaFileChooser(logoImageChooser);
+    resetImage(logoImageReset);
+
+
+    mediaFileChooser(topBackgroundWebpLgChooser);
+    resetImage(topBackgroundWebpLgReset);
+
+    mediaFileChooser(topBackgroundJpegLgChooser);
+    resetImage(topBackgroundJpegLgReset);
+
+    mediaFileChooser(topBackgroundWebpXsChooser);
+    resetImage(topBackgroundWebpXsReset);
+
+    mediaFileChooser(topBackgroundJpegXsChooser);
+    resetImage(topBackgroundJpegXsReset);
+
   }
 }
 

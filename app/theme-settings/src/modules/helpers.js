@@ -23,10 +23,10 @@
         let action = '';
     
         switch (obj.input) {
-          case '#wdss-jsonld-schema-orgname input':
+          case '#wdst-jsonld-schema-orgname input':
             action = wdst_localize.site_name;
             break;
-          case '#wdss-jsonld-schema-email input':
+          case '#wdst-jsonld-schema-email input':
             action = wdst_localize.site_email;
             break;          
           default:
@@ -51,7 +51,7 @@
 
   // Show/hide accordion content helper
   export function accordionToggler() {
-    const accordions = Array.from(document.querySelectorAll('.wdss-setting-item-accordion'));
+    const accordions = Array.from(document.querySelectorAll('.wdst-setting-item-accordion'));
 
     accordions.forEach(accordion => {
 
@@ -94,7 +94,7 @@
 
   // Show/hide section on click helper
   export function sectionToggler() {
-    const sectionsList = document.querySelectorAll('.wdss-section:not(#wdss-snippets-settings) > .wdss-row');
+    const sectionsList = document.querySelectorAll('.wdst-section > .wdst-row');
 
     sectionsList.forEach((section) => {
 
@@ -122,16 +122,38 @@
   // Show/hide group on-condition helper
   export function groupToggler(section) {  
     const toggler = document.querySelector(section.toggler);
-    const is_enabled = toggler.hasAttribute('checked');
-    const target = document.querySelector(section.target);
-    
-    if (is_enabled) {
-      target.classList.toggle('hidden');
+
+    if(section.type === 'checkbox') {
+      const is_enabled = toggler.hasAttribute('checked');
+      const target = document.querySelector(section.target);
+      
+      if (is_enabled) {
+        target.classList.toggle('hidden');
+      }
+
+      toggler.addEventListener('click', () => {
+        target.classList.toggle('hidden');
+      });
     }
-    
-    toggler.addEventListener('click', () => {
-      target.classList.toggle('hidden');
-    });
+    else if(section.type === 'select') {
+      const target = document.querySelector(`#${toggler.value}`);
+      const parent = target.closest('div.wdst-section-group');
+
+      toggler.addEventListener('change', () => {
+        
+        let groups_arr = parent.querySelectorAll('.wdst-setting-group');
+        groups_arr.forEach(group => {
+          group.classList.add('hidden');
+        });
+
+        const updated_target = document.querySelector(`#${toggler.value}`);
+        updated_target.classList.remove('hidden');
+      });
+      target.classList.remove('hidden');
+    }
+
+
+
   }
 
 
@@ -157,6 +179,31 @@
     });
   }
 
+  
+  // Resets selected image throw mediaFileChooser
+  export function resetImage(...items) {
+    items.forEach(item => {
+      const buttons = Array.from(document.querySelectorAll(item.button));
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          let parent = button.closest('div');
+          let target = parent.querySelector(item.target);
+          let image_preview = parent.querySelector('.wdst-image-chooser-preview');
+
+          if(target.value !== "") {
+            notification.confirm('Are you sure?').then(function(result) {
+              if(result === true) {
+                target.value = "";
+                image_preview.style.backgroundImage = 'unset';
+              }
+            });
+          }
+        });
+      });
+    });
+  }
+
 
   // Check option in modal window
   export function check(input) {
@@ -174,8 +221,8 @@
 
   // Checks/unchecks all checkbox inputs within section
   export function toggleAllOptions() {
-    const inputs = Array.from(document.querySelectorAll('#wdss-snippets-settings input'));
-    let toggler = document.querySelector('#wdss-toggle-options');
+    const inputs = Array.from(document.querySelectorAll('#wdst-snippets-settings input'));
+    let toggler = document.querySelector('#wdst-toggle-options');
 
     function uncheckAll() {
       inputs.forEach((input) => {

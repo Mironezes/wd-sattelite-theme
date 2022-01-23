@@ -44,8 +44,11 @@
                 wdst_select_handler_html(
                   [
                     'field_name' => 'wdst_archive_posts_layout',
-                    'field_options' => ['Full-width', 'Cards']
+                    'field_options' => [
+                      ['full-width', 'Full-width'], 
+                      ['cards', 'Cards']
                     ]
+                  ]
                 );              
               ?>   
             </label>

@@ -17,30 +17,28 @@
         $selected = get_option($args['field_name']);
         foreach ($args['field_options'] as $option) { ?>
           <option   
-            <?php if($selected == esc_attr($option)):?> selected <?php endif; ?>
-            value="<?= esc_attr($option);?>">
-            <?= esc_attr($option);?>
+            <?php selected($selected, esc_attr($option[0])); ?>
+            value="<?= esc_attr($option[0]);?>">
+            <?= esc_attr($option[1]);?>
           </option>
       <?php } ?>
    </select>
   <? }
 
   function wdst_image_to_url_handler_html($args) { 
-    if(get_option($args['field_name'])) {
-      $attachment_url = esc_attr(get_option($args['field_name']));
-    }
-    else {
-      $attachment_id = esc_attr(get_option($args['field_name']));
-      $attachment_url = wp_get_attachment_url($attachment_id);
-    }
+    $attachment_url = esc_attr(get_option($args['field_name'])) ?: '';
+    $attachment_id = attachment_url_to_postid(esc_attr(get_option($args['field_name'])));
   ?>
+    <div class="wdst-image-chooser-preview" 
+         style="background-image: url('<?= $attachment_url; ?>');">
+    </div>
     <input type="text" 
-      <?php if(isset($args['id'])) : ?> id="<?= $args['id']; ?>" <?php endif ?>
-      <?php if(isset($args['class'])) : ?> class="<?= $args['class']; ?>" <?php endif ?>
+      <?php if(isset($attachment_id)) : ?> data-id="<?= $attachment_id;?>" <?php endif; ?>
+      <?php if(isset($args['id'])) : ?> id="<?= $args['id']; ?>" <?php endif; ?>
       name="<?= $args['field_name']; ?>" 
-      value="<?= $attachment_url; ?>" 
-      >  
-  <? }
+      <?php if(isset($attachment_url)) : ?> value="<?= $attachment_url; ?>" <?php endif; ?> 
+    >  
+  <?php }
 
 
   function wdst_textarea_handler_html($args) { 
@@ -52,9 +50,9 @@
 
   function wdst_date_handler_html($args) { ?>
     <input type="date" name="<?= $args['field_name']; ?>" value="<?= esc_attr(get_option($args['field_name']));?>" >  
-  <? }
+  <?php }
 
 
   function wdst_number_handler_html($args) { ?>
     <input type="number" name="<?= $args['field_name']; ?>" min="<?= $args['min']; ?>" max="<?= $args['max']; ?>" value="<?= esc_attr(get_option($args['field_name']));?>" >  
-  <? }
+  <?php }

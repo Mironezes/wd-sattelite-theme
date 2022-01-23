@@ -21,29 +21,29 @@ export default function getPostsModal(obj) {
 
 	if(modal) {
 		const open_modal_btn = document.querySelector(obj.open_modal_btn);
-		const close_modal_btn = modal.querySelector('.wdss-modal-header i.times');
+		const close_modal_btn = modal.querySelector('.wdst-modal-header i.times');
 	
 		let total_posts = wdst_localize.total_post_count;
 	
 		function Init() {
-			const modal_body = modal.querySelector('.wdss-modal-body');
-			const info_panel = modal.querySelector('.wdss-modal-informaion-panel');
+			const modal_body = modal.querySelector('.wdst-modal-body');
+			const info_panel = modal.querySelector('.wdst-modal-informaion-panel');
 			const context = modal.querySelector('tbody');
 	
-			const execute_btn = modal.querySelector('.wdss-button.submit');
-			const toggle_all_btn = modal.querySelector('.wdss-button.toggle-all');
-			const get_posts_btn = modal.querySelector('.wdss-button.get-posts');
+			const execute_btn = modal.querySelector('.wdst-button.submit');
+			const toggle_all_btn = modal.querySelector('.wdst-button.toggle-all');
+			const get_posts_btn = modal.querySelector('.wdst-button.get-posts');
 	
-			const total_posts_text = modal.querySelector('.wdss-modal-posts-count');
+			const total_posts_text = modal.querySelector('.wdst-modal-posts-count');
 			let total_posts_text_number = total_posts_text.querySelector('strong');
 	
-			const welcome_msg = modal.querySelector('.wdss-modal-welcome-msg');
-			const not_found_msg_template = '<span class="wdss-modal-not-found-msg">No results...</span>';
+			const welcome_msg = modal.querySelector('.wdst-modal-welcome-msg');
+			const not_found_msg_template = '<span class="wdst-modal-not-found-msg">No results...</span>';
 	
 			const completed_msg_template = '<span class="msg successful">Completed!<br><small>It can take several minutes while changes are implementing</small></span>';
 			const error_msg_template = '<span class="msg error">An Error occured!<br><smallLook in console for more details</small></span>';
 	
-			const modal_title = modal.querySelector('.wdss-modal-title');
+			const modal_title = modal.querySelector('.wdst-modal-title');
 			const modal_title_value = obj.modal_title;
 	
 			if (modal_title.childNodes.length < 1) {
@@ -71,7 +71,7 @@ export default function getPostsModal(obj) {
 			document.onkeydown = ((e) => e.key === 'Esc' || e.key === 'Escape' ? closeModal() : null);
 	
 			function getPostsFromTable() {
-				return Array.from(document.querySelectorAll('.wdss-table-row.post'));
+				return Array.from(document.querySelectorAll('.wdst-table-row.post'));
 			}
 	
 			function updateFetchedPostsNumber() {
@@ -88,7 +88,7 @@ export default function getPostsModal(obj) {
 			function toggleAllCheckboxes() {
 				let posts = getPostsFromTable();
 				posts.forEach(post => {
-					let checkbox = post.querySelector('.wdss-table-post__select input[type="checkbox"]');
+					let checkbox = post.querySelector('.wdst-table-post__select input[type="checkbox"]');
 						check(checkbox);
 				});
 			}
@@ -191,7 +191,7 @@ export default function getPostsModal(obj) {
 					total_posts_text.classList.remove('active');
 					total_posts_text_number.innerHTML = '';
 	
-					let table_rows = Array.from(modal.querySelectorAll('.wdss-table-row.post'));
+					let table_rows = Array.from(modal.querySelectorAll('.wdst-table-row.post'));
 	
 					table_rows.forEach(row => {
 						row.parentNode.removeChild(row);
@@ -201,7 +201,7 @@ export default function getPostsModal(obj) {
 				if (posts_list.length > 0) {
 					posts_list.forEach(post => {
 						post.addEventListener('click', () => {
-							let checkbox = post.querySelector('.wdss-table-post__select input[type="checkbox"]');
+							let checkbox = post.querySelector('.wdst-table-post__select input[type="checkbox"]');
 							if (checkbox.hasAttribute('checked')) {
 								uncheck(checkbox);
 							} else {
@@ -230,7 +230,7 @@ export default function getPostsModal(obj) {
 						if (result !== true) {
 							return;
 						} else {
-							const proceded_posts = Array.from(modal.querySelectorAll('.wdss-table-post__select input[type="checkbox"]:checked'));
+							const proceded_posts = Array.from(modal.querySelectorAll('.wdst-table-post__select input[type="checkbox"]:checked'));
 							let proceded_posts_ids_arr = [];
 							let proceded_posts_ids;
 	

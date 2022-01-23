@@ -11,6 +11,9 @@ export default function mediaFileChooser(obj) {
       if(!obj.types) {
         obj.types = ['image'];
       }
+      if(!obj.is_multiple) {
+        obj.is_multiple = false
+      }
 
       image_frame = wp.media({
         title: obj.title,
@@ -26,43 +29,59 @@ export default function mediaFileChooser(obj) {
       });
 
       image_frame.on('close', function() {
-        let featured_image_section = btn.closest('.image-chooser.featured');
-        let json_logo_section = btn.closest('.image-chooser.logo');
+        let parent = btn.closest('.image-chooser');
         let selection = image_frame.state().get('selection');
+        let target_input = parent.querySelector(obj.target); 
 
-        let gallery_ids = new Array();
         let gallery_urls = new Array();
         let index = 0;
+  
+          if(parent) {
+            selection.forEach(function(attachment) {
+              gallery_urls[index] = attachment.attributes['url'];
+              index++;
+            });
 
-        if(featured_image_section) {
-          selection.forEach(function(attachment) {
-            gallery_ids[index] = attachment['id'];
-            index++;
-          });
-
-          let ids = gallery_ids.join(",");
-          featured_image_section.querySelector(obj.target).value = ids;
-        }
-        else if(json_logo_section) {
-          selection.forEach(function(attachment) {
-            gallery_urls[index] = attachment.attributes['url'];
-            index++;
-          });
-          let urls = gallery_urls.join(",");
-          json_logo_section.querySelector(obj.target).value = urls;         
-        }
+            if(obj.is_multiple == true) {
+              let urls = gallery_urls.join(",");
+              if(target_input) {
+                target_input.value = urls;
+              }
+            }
+            else {
+              if(target_input) {
+                let image_preview = parent.querySelector('.wdst-image-chooser-preview');
+                target_input.value = gallery_urls[0];
+                image_preview.style.backgroundImage = "url(" + gallery_urls[0] + ")";
+              }
+            } 
+          }
       });
 
       image_frame.on('open', function() {
-        let current_section = btn.closest('.wdss-setting-item.image-chooser');
-        let selection = image_frame.state().get('selection');
-        let ids = current_section.querySelector(obj.target).value.split(',');
-        ids.forEach(function(id) {
-          let attachment = wp.media.attachment(id);
-          attachment.fetch();
-          selection.add(attachment ? [attachment] : []);
-        });
 
+        let current_section = btn.closest('.image-chooser');
+        let selection = image_frame.state().get('selection');
+        let ids_el = current_section.querySelector(obj.target);
+
+        if(obj.is_multiple == true) {
+          if(ids_el.value) {
+            let ids_arr = ids_el.value.split(',');
+            ids_arr.forEach(function(id) {
+              let attachment = wp.media.attachment(id);
+              attachment.fetch();
+              selection.add(attachment ? [attachment] : []);
+            });
+          }
+        }
+        else {
+          if(ids_el.dataset.id) {
+            let id = ids_el.dataset.id;
+            let attachment = wp.media.attachment(id);
+             attachment.fetch();
+            selection.add(attachment ? [attachment] : []);
+          }
+        }
       });
 
       image_frame.open();

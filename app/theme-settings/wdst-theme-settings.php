@@ -18,26 +18,51 @@ require_once('includes/form-handler.php');
 add_action( 'admin_enqueue_scripts', 'wdst_enqueue_admin_scripts' );
 function wdst_enqueue_admin_scripts() {
 
-	wp_register_style('wdst-styles',  get_template_directory_uri() . '/app/theme-settings/assets/styles.css',  array(), _S_VERSION);
-	wp_register_script('wdst-scripts',  get_template_directory_uri() . '/app/theme-settings/assets/scripts.js',  array(), _S_VERSION, true);
+	if( get_current_screen()->id == 'toplevel_page_wdst-settings' ) {
+		wp_enqueue_media();
 
-	$wdst_localize_script = array(
-		'is_polylang_exists' => function_exists( 'pll_languages_list' ),
-		'is_polylang_setup' => function_exists( 'pll_languages_list' ) && count(pll_languages_list()) > 0,
+		wp_register_style('wdst-styles',  get_template_directory_uri() . '/app/theme-settings/assets/styles.css',  array(), _S_VERSION);
+		wp_register_script('wdst-scripts',  get_template_directory_uri() . '/app/theme-settings/assets/scripts.js',  array(), _S_VERSION, true);
+	
+		$wdst_localize_script = array(
+			'is_polylang_exists' => function_exists( 'pll_languages_list' ),
+			'is_polylang_setup' => function_exists( 'pll_languages_list' ) && count(pll_languages_list()) > 0,
+	
+			'wp_rand' => wp_rand(),
+			'url' => admin_url( 'admin-ajax.php' ),
+		);
+		wp_localize_script( 'wdst-scripts', 'wdst_localize', $wdst_localize_script);
+	
+		wp_enqueue_style('wdst-styles');
+		wp_enqueue_script('wdst-scripts');
+	}
 
-		'wp_rand' => wp_rand(),
-		'url' => admin_url( 'admin-ajax.php' ),
-	);
-	wp_localize_script( 'wdst-scripts', 'wdst_localize', $wdst_localize_script);
-
-	wp_enqueue_style('wdst-styles');
-	wp_enqueue_script('wdst-scripts');
 }
 
 
+/**
+ * Sets max image size limit.
+ */
+function wdst_max_image_size_limit( $file ) {
+		$size = $file['size'];
+		$size = $size / 1024;
+		$type = $file['type'];
+		$is_image = strpos( $type, 'image' ) !== false;
+		$limit = 150;
+		$limit_output = '150kb';
+
+		if ( $is_image && $size > $limit ) {
+			$file['error'] = 'Image files must be smaller than ' . $limit_output;
+		}
+
+		return $file;
+}
+add_filter( 'wp_handle_upload_prefilter', 'wdst_max_image_size_limit' );
 
 
-
+/**
+ * Sets Theme Settings Template.
+ */
 function wdst_settings_template() { ?>
 	<div id="wdst-settings-page">
 		<div class="container">
