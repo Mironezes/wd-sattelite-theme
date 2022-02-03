@@ -54,7 +54,7 @@
       </div>
 
       <div class="wdst-section-group">
-        <strong class="wdst-section-group__title">Main Background Image</strong>
+        <strong class="wdst-section-group__title">Background Image on Inner Pages</strong>
         <div id="wdst-use-top-bg-img" class="wdst-setting-item">
             <label>
               <span>Use background image</span>

@@ -18,6 +18,7 @@ $current_lang = null;
 if(function_exists('pll_current_language')) $current_lang = pll_current_language();
 
 $show_categories_list = strval(get_option('wdst_homepage_categories_list', ''));
+$show_welcome_screen = strval(get_option('wdst_welcome_screen', ''));
 
 $show_sidebar = get_option('wdst_homepage_sidebar', '');
 $show_sidebar = $show_sidebar ? 1 : 0;
@@ -41,7 +42,7 @@ $has_sidebar = $show_sidebar ? 'has-sidebar' : '';
 	<main id="home" class="site-content <?= $has_sidebar;?>">
 		<div class="container">
 			<section class="site-content-main">
-				<?php if(!$show_categories_list) : ?>
+				<?php if(!$show_welcome_screen) : ?>
 					<?php if($current_lang) : ?>
 						<h1><?= get_option('wdst_homepage_heading_' . $current_lang . '', '');?></h1>
 						<?php 
