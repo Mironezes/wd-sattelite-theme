@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0b' );
+	define( '_S_VERSION', '1.0' );
 }
 
 if ( ! function_exists( 'wd_sattelite_theme_setup' ) ) :
@@ -264,6 +264,13 @@ require_once(__DIR__ . '/app/pll-theme-strings.php');
 require_once(__DIR__ . '/app/theme-settings/wdst-theme-settings.php');
 
 
+/**
+ * Usefull content debug helper function
+ */
+add_filter('the_content','wdst_content_test');
+function wdst_content_test($content) {
+	// Any custom debug logic
 
 
-
+	return $content;
+}

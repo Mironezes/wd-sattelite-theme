@@ -1,12 +1,9 @@
 function Init() {
   const header = document.querySelector('.site-header');
   const main_nav = document.querySelector('#header-navigation');
-  const mobile_menu_toggler = main_nav.querySelector('#mobile-menu-toggler');
   const back_to_top_btn = document.querySelector('#site-back-to-top');
   const mobile_nav = document.querySelector('#mobile-navigation');
   const toc_list = Array.from(document.querySelectorAll('.toc_list a'));
-
-  const test = document.querySelector('#mobile-menu-toggler input');
 
   function fixedMobileMenu() {
     if(window.matchMedia("(max-width: 1240px)").matches) {

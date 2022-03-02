@@ -45,8 +45,8 @@
 	}
 
 	if(strpos(get_option('wdst_header_logo_type'), 'image')) {
-		$attach_id = get_option('wdst_author_preview_image', '');
-		$logo_data = wp_get_attachment_image_src($attach_id);
+		$attach_id = get_option('wdst_header_logo_image', '');
+		$logo_data = wp_get_attachment_image_src($attach_id, 'full');
 		$logo_img = "<img src='$logo_data[0]' width='$logo_data[1]' height='$logo_data[2]' alt='Logo'>";
 	}
 ?>
